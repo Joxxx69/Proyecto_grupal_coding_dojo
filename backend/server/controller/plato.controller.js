@@ -7,7 +7,7 @@
 
 
 //random  ---santiago
-const randomJoker = (req,res) => {
+const randomPlate = (req,res) => {
     // este metodo muestra un chiste aleatorio
     const {ig1, ig2,ig3}= req.params;
     return Jokers.aggregate([{$sample:{size:1}},{ingredientes:{$in:[ing1,ing2,ing3]}}]) //Jokers.aggregate.sample(1)   Jokers.aggregate([{$sample:{size:1}}])      
