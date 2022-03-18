@@ -1,21 +1,22 @@
 const mongoose = require('mongoose');
 
-
-
-
-const platosSchema = new mongoose.Schema({
+const platesSchema = new mongoose.Schema({
     nameplato:{
         type:String,
-        require:true,
+        required:true,
         unique:true
     },
     time:{
         type:Number,
-        require: true,
+        required: true,
     },
     ingredientes:{
         type:Array,
-        require:true
+        required:true
+    },
+    procedure:{
+        type:Array,
+        required:true
     },
     isFavorite:{
         type:Boolean  // si es true se guarda como favorito
@@ -23,7 +24,6 @@ const platosSchema = new mongoose.Schema({
     },
     photo:{
         type:String,
-        required:true
     },
     province:{
         type:String
@@ -31,6 +31,10 @@ const platosSchema = new mongoose.Schema({
 },{})
 
 
+
+const Plates = mongoose.model('Plates', platesSchema);
+
+module.exports = Plates;
 
 
 
