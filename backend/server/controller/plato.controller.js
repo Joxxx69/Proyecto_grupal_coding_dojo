@@ -1,4 +1,4 @@
-const Plate =require('../models/plato.model');
+const Plate =require('../models/plate.model');
 
 
 
