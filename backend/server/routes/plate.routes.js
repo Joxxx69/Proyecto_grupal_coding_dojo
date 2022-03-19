@@ -6,4 +6,5 @@ module.exports = function(app) {
     app.get('/api/getAll', controller.getAll);
     app.get('/api/getRandom/:ing1/:ing2/:ing3', controller.randomPlate);
     app.patch('/api/edit_plato/:id', PlatoController.updatePlato);
+    // funciona el escritorio
 }  
