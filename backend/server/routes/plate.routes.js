@@ -1,6 +1,5 @@
 const controller = require("../controller/plate.controller");
 
-
 module.exports = function (app) {
   app.post("/api/createPlate", controller.createPlate);
   app.get("/api/getAll", controller.getAll);
@@ -8,7 +7,5 @@ module.exports = function (app) {
   app.get("/api/plate/:name", controller.getPlate);
   app.put("/api/update/:id", controller.updateRecipe);
   app.delete("/api/recipe/:id", controller.deleteRecipe);
+  //ruta de prueba
 };
-
-
-
