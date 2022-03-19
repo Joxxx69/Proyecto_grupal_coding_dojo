@@ -23,6 +23,7 @@ const randomPlate = (req,res) => {
     // Plate.aggregate([{$sample:{size:1}}])
     // .match({ingredients:{$in:[ing1,ing2,ing3]}})
     //  .where({ingredients:{$in:[ing1,ing2,ing3]}})
+    
      .then(plateRandom => res.json(plateRandom))
           .catch(err => console.log(err));
     
@@ -48,7 +49,11 @@ const createPlate =(req,res)=>{
 
 
 //getOne -- jean pirre
-
+const getPlate = (req, res) => {
+    Plate.findOne({_id:req.params.id})
+        .then(plate => res.json(plate))
+        .catch(err => res.status(400).json(err))
+}
 
 //getAll -- jean pirre
 
@@ -87,7 +92,7 @@ const priceFurniture =(req,res, next)=>{
 
 
 
-// genere un plato ramdon --- depende de la provincia -- Santiago
+// genere un plato ramdon --- depende de la region -- Santiago
 // seria de genrar una llista filtrada y obtener un id aleatorio 
 
 
@@ -115,9 +120,15 @@ module.exports ={ createPlate, getAll, randomPlate }
 
 
 
-const fecha = new Date();
-    console.log(fecha.getUTCDate())
-    console.log(fecha.getUTCMonth())
-    console.log(fecha.getUTCFullYear())
-    console.log(fecha.getUTCHours())
-    console.log(fecha.getHours())    
+// const fecha = new Date();
+//     console.log(fecha.getUTCDate())
+//     console.log(fecha.getUTCMonth())
+//     console.log(fecha.getUTCFullYear())
+//     console.log(fecha.getUTCHours())
+//     console.log(fecha.getHours())    
+
+    const tiempoTranscurrido = Date.now();
+const hoy = new Date(tiempoTranscurrido);
+
+console.log(tiempoTranscurrido)
+console.log(hoy)
