@@ -49,7 +49,11 @@ const createPlate =(req,res)=>{
 
 
 //getOne -- jean pirre
-
+const getPlate = (req, res) => {
+    Plate.findOne({_id:req.params.id})
+        .then(plate => res.json(plate))
+        .catch(err => res.status(400).json(err))
+}
 
 //getAll -- jean pirre
 
