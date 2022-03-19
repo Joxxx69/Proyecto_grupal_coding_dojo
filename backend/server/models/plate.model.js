@@ -1,20 +1,21 @@
 const mongoose = require('mongoose');
 
 const platesSchema = new mongoose.Schema({
-    nameplato:{
+    nameplate:{
         type:String,
         required:true,
         unique:true
     },
     time:{
         type:Number,
-        required: true,
     },
-    ingredientes:{
-        type:Array,
-        required:true
+    portions:{
+        type:Number
     },
     procedure:{
+        type:Array,
+    },  
+    ingredients:{
         type:Array,
         required:true
     },
@@ -28,7 +29,7 @@ const platesSchema = new mongoose.Schema({
     province:{
         type:String
     }
-},{})
+},{timestamps:true})
 
 
 
