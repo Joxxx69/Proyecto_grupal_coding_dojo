@@ -93,16 +93,11 @@ const priceFurniture = (req, res, next) => {
 };
 
 // search-name  --- Ernesto
-<<<<<<< HEAD
 module.exports.getPlate = (request, response) => {
   Plate.findOne({ name: request.params.name })
     .then((plate) => response.json(plate))
     .catch((err) => response.json(err));
 };
-// genere un plato ramdon --- depende de la provincia -- Santiago
-// seria de genrar una llista filtrada y obtener un id aleatorio
-=======
-
 
 
 // genere un plato ramdon --- depende de la region -- Santiago
@@ -119,17 +114,7 @@ const randomPlateProvince = (req,res) => {
     .catch(err => console.log(err));
   };
 
->>>>>>> b78c1937ae1b8b7418091d8a2d2759a43c03f818
 
-const randomPlateProvince = (req, res) => {
-  // este metodo muestra un chiste aleatorio
-  const { provinceName } = req.params;
-
-  Plate.aggregate([{ $match: { province: provinceName } }])
-    .sample(1)
-    .then((plateRandomProvince) => res.json(plateRandomProvince))
-    .catch((err) => console.log(err));
-};
 
 ////------------------------------------ proximas actualizaciones---------------------------
 // busqueda por nombre en tiempo real
@@ -140,14 +125,13 @@ const randomPlateProvince = (req, res) => {
 
 module.exports = { createPlate, getAll, randomPlate };
 
-<<<<<<< HEAD
 const fecha = new Date();
 console.log(fecha.getUTCDate());
 console.log(fecha.getUTCMonth());
 console.log(fecha.getUTCFullYear());
 console.log(fecha.getUTCHours());
 console.log(fecha.getHours());
-=======
+
 // const fecha = new Date();
 //     console.log(fecha.getUTCDate())
 //     console.log(fecha.getUTCMonth())
@@ -160,4 +144,3 @@ const hoy = new Date(tiempoTranscurrido);
 
 console.log(tiempoTranscurrido)
 console.log(hoy)
->>>>>>> b78c1937ae1b8b7418091d8a2d2759a43c03f818
