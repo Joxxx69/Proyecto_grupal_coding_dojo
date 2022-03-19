@@ -13,7 +13,8 @@ const categorySchema = new mongoose.Schema({
 },{timestamps:true});
 
 
-const Plato = Mongoose.modele('plato', platosSchema);
+const Category = mongoose.model('Category', categorySchema);
+module.exports = Category;
 
 
 

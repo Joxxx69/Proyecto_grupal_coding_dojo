@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const {ObjectId} =mongoose.Schema;
+
 
 const platesSchema = new mongoose.Schema({
     nameplate:{
@@ -14,6 +16,11 @@ const platesSchema = new mongoose.Schema({
     },
     procedure:{
         type:Array,
+    },
+    category:{
+        type: ObjectId,
+        ref: "Category", // es el modelo a usar 
+        // required:true
     },  
     ingredients:{
         type:Array,
