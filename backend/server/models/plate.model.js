@@ -26,10 +26,6 @@ const platesSchema = new mongoose.Schema(
       type: Array,
       required: true,
     },
-    ingredients: {
-      type: Array,
-      required: true,
-    },
     isFavorite: {
       type: Boolean, // si es true se guarda como favorito
       // hacer que me liste los que esten en true
