@@ -29,11 +29,11 @@ module.exports.deletePlate = (request, response) => {
     .then((deleteConfirmation) => response.json(deleteConfirmation))
     .catch((err) => response.json(err));
 };
-//create  ---Jean Pierre
 
+//create  ---Jean Pierre --- hace falta lo de la referencia 
 const createPlate = (req, res) => {
-  const { nameplate, ingredients } = req.body;
-  const newPlate = new Plate({ nameplate, ingredients });
+  const { nameplate, time, portions, procedure, ingredients, isFavorite, photo, province } = req.body;
+  const newPlate = new Plate({ nameplate, time, portions, procedure, ingredients, isFavorite, photo, province });
   newPlate
     .save()
     .then((plate) => res.json(plate))
@@ -49,15 +49,14 @@ module.exports.updatePlate = (request, response) => {
     .then((updatePlate) => response.json(updatePlate))
     .catch((err) => response.status(400).json(err));
 };
-//getOne -- jean pirre
-const getPlate = (req, res) => {
-    Plate.findOne({_id:req.params.id})
-        .then(plate => res.json(plate))
-        .catch(err => res.status(400).json(err))
-}
+//getOne -- Jean Pierre 
+const getPlateById = (req, res) => {
+  Plate.findOne({_id:req.params.id})
+      .then(plate => res.json(plate))
+      .catch(err => res.status(400).json(err))
+};
 
 //getAll -- jean pirre
-
 const getAll = (req, res) => {
   Plate.find()
     .then((plates) => res.json(plates))
@@ -67,6 +66,11 @@ const getAll = (req, res) => {
 //news  --santiago
 
 //update-favorite --. pueda cambiar a true y false ---jean pierre
+const updateIsFavoritePlato = (req, res) => {
+  Plate.findOneAndUpdate({_id: req.params.id}, req.body, {new:true})
+      .then(updatedPlate => res.json(updatedPlate))
+      .catch(err => res.status(400).json(err))
+}
 
 // se realiza el cambio con patch se utiliza $set
 
@@ -123,7 +127,7 @@ const randomPlateProvince = (req,res) => {
 
 ////
 
-module.exports = { createPlate, getAll, randomPlate };
+module.exports = { createPlate, getAll, randomPlate, getPlateById, updateIsFavoritePlato };
 
 const fecha = new Date();
 console.log(fecha.getUTCDate());
