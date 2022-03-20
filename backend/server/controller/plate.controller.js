@@ -34,7 +34,7 @@ const deletePlate = (request, response) => {
     .catch((err) => response.json(err));
 };
 
-//create  ---Jean Pierre --- hace falta lo de la referencia
+//create  --- Jean Pierre 
 const createPlate = (req, res) => {
   const { nameplate, time, portions, procedure, category, ingredients, isFavorite, photo, region } = req.body;
   const newPlate = new Plate({ nameplate, time, portions, procedure, category, ingredients, isFavorite, photo, region });
