@@ -4,21 +4,10 @@ const Plate = require("../models/plate.model");
 
 //random  ---santiago
 const randomPlate = (req, res) => {
-  // este metodo muestra un chiste aleatorio
   const { ing1, ing2, ing3 } = req.params;
-  // {ingredientes:{$in:[ing1,ing2,ing3]}}
-  console.log(`${ing1}--------${ing2}------${ing3}`);
-  // Plate.aggregate([{$sample:{size:1}},{ingredientes:{$in:[ing1,ing2,ing3]}}])
-
-  //  Plate.aggregate([{$match:{ingredientes:{$in:[ing1,ing2,ing3]}}}])
-
-  Plate.aggregate([{ $match: { ingredients: { $in: [ing1, ing2, ing3] } } }])
+  // sample me genera uno doucmento aleatorio y all hace coincidan todos los elementos.
+  Plate.aggregate([{ $match: { ingredients: { $all: [ing1, ing2, ing3] } } }])
     .sample(1)
-
-    //  .limit(1)
-    // Plate.aggregate([{$sample:{size:1}}])
-    // .match({ingredients:{$in:[ing1,ing2,ing3]}})
-    //  .where({ingredients:{$in:[ing1,ing2,ing3]}})
     .then((plateRandom) => res.json(plateRandom))
     .catch((err) => console.log(err));
 };
