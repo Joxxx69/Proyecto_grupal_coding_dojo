@@ -13,7 +13,7 @@ const createCategory = (req, res) => {
 const getAllCategories = (req, res) => {
   Category.find()
     .then((allCategories) => res.json(allCategories))
-    .catch((err) => res.json({ message: "Something went wrong", error: err }));
+    .catch((err) => res.status(400).json({ message: "Something went wrong", error: err }));
 };
 const updateCategory = (req, res) => {
   Category.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
