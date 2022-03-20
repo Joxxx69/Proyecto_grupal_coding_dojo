@@ -14,7 +14,7 @@ const createCategory = (req, res) => {
 
 const getAllCategories = (request, response) => {
   Category.find()
-    .then((allCategories) => response.json({ recipe: allCategories }))
+    .then((allCategories) => response.json(allCategories))
     .catch((err) =>
       response.json({ message: "Something went wrong", error: err })
     );
