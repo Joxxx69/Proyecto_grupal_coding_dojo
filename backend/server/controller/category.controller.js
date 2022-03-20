@@ -19,7 +19,15 @@ const getAllCategories = (request, response) => {
       response.json({ message: "Something went wrong", error: err })
     );
 };
+const updateCategory = (request, response) => {
+  Category.findOneAndUpdate({ _id: request.params.id }, request.body, {
+    new: true,
+  })
+    .then((updateCategory) => response.json(updateCategory))
+    .catch((err) => response.status(400).json(err));
+};
 module.exports = {
   createCategory,
   getAllCategories,
+  updateCategory,
 };
