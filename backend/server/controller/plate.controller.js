@@ -24,16 +24,34 @@ const randomPlate = (req, res) => {
 };
 
 // deleteOne --- Ernesto
-module.exports.deletePlate = (request, response) => {
+const deletePlate = (request, response) => {
   Plate.deleteOne({ _id: request.params.id })
     .then((deleteConfirmation) => response.json(deleteConfirmation))
     .catch((err) => response.json(err));
 };
 
-//create  ---Jean Pierre --- hace falta lo de la referencia 
+//create  ---Jean Pierre --- hace falta lo de la referencia
 const createPlate = (req, res) => {
-  const { nameplate, time, portions, procedure, ingredients, isFavorite, photo, province } = req.body;
-  const newPlate = new Plate({ nameplate, time, portions, procedure, ingredients, isFavorite, photo, province });
+  const {
+    nameplate,
+    time,
+    portions,
+    procedure,
+    ingredients,
+    isFavorite,
+    photo,
+    province,
+  } = req.body;
+  const newPlate = new Plate({
+    nameplate,
+    time,
+    portions,
+    procedure,
+    ingredients,
+    isFavorite,
+    photo,
+    province,
+  });
   newPlate
     .save()
     .then((plate) => res.json(plate))
@@ -41,7 +59,7 @@ const createPlate = (req, res) => {
 };
 
 //update --- Ernesto
-module.exports.updatePlate = (request, response) => {
+const updatePlate = (request, response) => {
   Plate.findOneAndUpdate({ _id: request.params.id }, request.body, {
     new: true,
     runValidators: true, //Esto enciende las validaciones en la edicion de un documento
@@ -49,11 +67,11 @@ module.exports.updatePlate = (request, response) => {
     .then((updatePlate) => response.json(updatePlate))
     .catch((err) => response.status(400).json(err));
 };
-//getOne -- Jean Pierre 
+//getOne -- Jean Pierre
 const getPlateById = (req, res) => {
-  Plate.findOne({_id:req.params.id})
-      .then(plate => res.json(plate))
-      .catch(err => res.status(400).json(err))
+  Plate.findOne({ _id: req.params.id })
+    .then((plate) => res.json(plate))
+    .catch((err) => res.status(400).json(err));
 };
 
 //getAll -- jean pirre
@@ -67,10 +85,10 @@ const getAll = (req, res) => {
 
 //update-favorite --. pueda cambiar a true y false ---jean pierre
 const updateIsFavoritePlato = (req, res) => {
-  Plate.findOneAndUpdate({_id: req.params.id}, req.body, {new:true})
-      .then(updatedPlate => res.json(updatedPlate))
-      .catch(err => res.status(400).json(err))
-}
+  Plate.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
+    .then((updatedPlate) => res.json(updatedPlate))
+    .catch((err) => res.status(400).json(err));
+};
 
 // se realiza el cambio con patch se utiliza $set
 
@@ -97,28 +115,24 @@ const priceFurniture = (req, res, next) => {
 };
 
 // search-name  --- Ernesto
-module.exports.getPlate = (request, response) => {
+const getPlateByName = (request, response) => {
   Plate.findOne({ name: request.params.name })
     .then((plate) => response.json(plate))
     .catch((err) => response.json(err));
 };
 
-
 // genere un plato ramdon --- depende de la region -- Santiago
-// seria de genrar una llista filtrada y obtener un id aleatorio 
+// seria de genrar una llista filtrada y obtener un id aleatorio
 
+const randomPlateProvince = (req, res) => {
+  // este metodo muestra un chiste aleatorio
+  const { provinceName } = req.params;
 
-const randomPlateProvince = (req,res) => {
-    // este metodo muestra un chiste aleatorio
-    const {provinceName}= req.params;
-
-     Plate.aggregate([{$match:{province:provinceName}}])
-     .sample(1)
-     .then(plateRandomProvince => res.json(plateRandomProvince))
-    .catch(err => console.log(err));
-  };
-
-
+  Plate.aggregate([{ $match: { province: provinceName } }])
+    .sample(1)
+    .then((plateRandomProvince) => res.json(plateRandomProvince))
+    .catch((err) => console.log(err));
+};
 
 ////------------------------------------ proximas actualizaciones---------------------------
 // busqueda por nombre en tiempo real
@@ -127,7 +141,16 @@ const randomPlateProvince = (req,res) => {
 
 ////
 
-module.exports = { createPlate, getAll, randomPlate, getPlateById, updateIsFavoritePlato };
+module.exports = {
+  createPlate,
+  getAll,
+  randomPlate,
+  getPlateById,
+  updateIsFavoritePlato,
+  deletePlate,
+  updatePlate,
+  getPlateByName,
+};
 
 const fecha = new Date();
 console.log(fecha.getUTCDate());
@@ -141,10 +164,10 @@ console.log(fecha.getHours());
 //     console.log(fecha.getUTCMonth())
 //     console.log(fecha.getUTCFullYear())
 //     console.log(fecha.getUTCHours())
-//     console.log(fecha.getHours())    
+//     console.log(fecha.getHours())
 
-    const tiempoTranscurrido = Date.now();
+const tiempoTranscurrido = Date.now();
 const hoy = new Date(tiempoTranscurrido);
 
-console.log(tiempoTranscurrido)
-console.log(hoy)
+console.log(tiempoTranscurrido);
+console.log(hoy);
