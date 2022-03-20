@@ -8,8 +8,21 @@ const randomPlate = (req, res) => {
   // sample me genera uno doucmento aleatorio y all hace coincidan todos los elementos.
   Plate.aggregate([{ $match: { ingredients: { $all: [ing1, ing2, ing3] } } }])
     .sample(1)
-    .then((plateRandom) => res.json(plateRandom))
-    .catch((err) => console.log(err));
+    .then(plateRandom =>{
+      // el condicional me devuelve un plato aleatorio en caso que ninguno de los ingredientes coincidan con "$all"
+      // el platon aleatorio sera generado con "$in"
+      console.log('1')
+      if(Object.keys(plateRandom).length === 0){
+        console.log('2')
+        Plate.aggregate([{ $match: { ingredients: { $in: [ing1, ing2, ing3] } } }])
+        .sample(1)
+        .then(plate => res.json(plate))
+        .catch(err => console.log(err))
+      }else{
+        res.json(plateRandom);
+      }
+    })
+    .catch(err => console.log(err));
 };
 
 // deleteOne --- Ernesto
