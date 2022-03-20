@@ -40,6 +40,6 @@ const platesSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Plates = mongoose.model("Plates", platesSchema);
+const Plate = mongoose.model("Plates", platesSchema);
 
-module.exports = Plates;
+module.exports = Plate;

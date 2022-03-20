@@ -69,6 +69,10 @@ const getAll = (req, res) => {
 //news  --santiago
 
 const platesNews = (req,res) => {
+
+Plate.find()
+
+
   const fecha = new Date();
 console.log('dia: ',fecha.getDate())
 console.log('mes: ',fecha.getMonth()+1)
@@ -154,5 +158,7 @@ module.exports = {
   platesNews
 };
 
+const creacion = new Plate();
 
+console.log(creacion)
 
