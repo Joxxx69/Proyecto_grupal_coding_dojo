@@ -1,4 +1,5 @@
 const Plate = require("../models/plate.model");
+const _ = require('lodash')
 
 /// para verle todos como hacer este controlor
 
@@ -12,7 +13,7 @@ const randomPlate = (req, res) => {
       // el condicional me devuelve un plato aleatorio en caso que ninguno de los ingredientes coincidan con "$all"
       // el platon aleatorio sera generado con "$in"
       console.log('1')
-      if(Object.keys(plateRandom).length === 0){
+      if(_.isEmpty(plateRandom)){
         console.log('2')
         Plate.aggregate([{ $match: { ingredients: { $in: [ing1, ing2, ing3] } } }])
         .sample(1)
