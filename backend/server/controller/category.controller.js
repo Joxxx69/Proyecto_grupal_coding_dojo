@@ -2,9 +2,10 @@ const Category = require("../models/categoria.model");
 
 const createCategory = (req, res) => {
   const { nameCategory, photoUrl } = req.body;
+  console.log(nameCategory, photoUrl)
+  console.log('creacion de categoria')
   const newCategory = new Category({ nameCategory, photoUrl });
-  newCategory
-    .save()
+  newCategory.save()
     .then((category) => res.json(category))
     .catch((err) => console.log("there was an error", err));
 };
