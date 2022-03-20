@@ -13,6 +13,7 @@ const randomPlate = (req, res) => {
       // el condicional me devuelve un plato aleatorio en caso que ninguno de los ingredientes coincidan con "$all"
       // el platon aleatorio sera generado con "$in"
       console.log('1')
+      // se utiliza lodash para saber si tengo un objeto vacio
       if(_.isEmpty(plateRandom)){
         console.log('2')
         Plate.aggregate([{ $match: { ingredients: { $in: [ing1, ing2, ing3] } } }])
@@ -35,30 +36,9 @@ const deletePlate = (request, response) => {
 
 //create  ---Jean Pierre --- hace falta lo de la referencia
 const createPlate = (req, res) => {
-  const {
-    nameplate,
-    time,
-    portions,
-    procedure,
-    category,
-    ingredients,
-    isFavorite,
-    photo,
-    province,
-  } = req.body;
-  const newPlate = new Plate({
-    nameplate,
-    time,
-    portions,
-    procedure,
-    category,
-    ingredients,
-    isFavorite,
-    photo,
-    province,
-  });
-  newPlate
-    .save()
+  const { nameplate, time, portions, procedure, category, ingredients, isFavorite, photo, region } = req.body;
+  const newPlate = new Plate({ nameplate, time, portions, procedure, category, ingredients, isFavorite, photo, region });
+  newPlate.save()
     .then((plate) => res.json(plate))
     .catch((err) => console.log("there was an error", err));
 };
@@ -87,6 +67,22 @@ const getAll = (req, res) => {
 };
 
 //news  --santiago
+
+const platesNews = (req,res) => {
+  const fecha = new Date();
+console.log('dia: ',fecha.getDate())
+console.log('mes: ',fecha.getMonth()+1)
+console.log('hora: ', fecha.getHours())
+console.log('min: ', fecha.getMinutes())
+console.log('seg: ', fecha.getSeconds())
+
+}
+
+
+
+
+
+
 
 //update-favorite --. pueda cambiar a true y false ---jean pierre
 const updateIsFavoritePlato = (req, res) => {
@@ -129,13 +125,13 @@ const getPlateByName = (request, response) => {
 // genere un plato ramdon --- depende de la region -- Santiago
 // seria de genrar una llista filtrada y obtener un id aleatorio
 
-const randomPlateProvince = (req, res) => {
+const randomPlateRegion = (req, res) => {
   // este metodo muestra un chiste aleatorio
-  const { provinceName } = req.params;
+  const { RegionName } = req.params;
 
-  Plate.aggregate([{ $match: { province: provinceName } }])
+  Plate.aggregate([{ $match: { region: RegionName } }])
     .sample(1)
-    .then((plateRandomProvince) => res.json(plateRandomProvince))
+    .then((plateRandomRegion) => res.json(plateRandomRegion))
     .catch((err) => console.log(err));
 };
 
@@ -155,24 +151,8 @@ module.exports = {
   deletePlate,
   updatePlate,
   getPlateByName,
+  platesNews
 };
 
-const fecha = new Date();
-console.log(fecha.getUTCDate());
-console.log(fecha.getUTCMonth());
-console.log(fecha.getUTCFullYear());
-console.log(fecha.getUTCHours());
-console.log(fecha.getHours());
 
-// const fecha = new Date();
-//     console.log(fecha.getUTCDate())
-//     console.log(fecha.getUTCMonth())
-//     console.log(fecha.getUTCFullYear())
-//     console.log(fecha.getUTCHours())
-//     console.log(fecha.getHours())
 
-const tiempoTranscurrido = Date.now();
-const hoy = new Date(tiempoTranscurrido);
-
-console.log(tiempoTranscurrido);
-console.log(hoy);

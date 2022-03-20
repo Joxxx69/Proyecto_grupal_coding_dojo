@@ -33,7 +33,7 @@ const platesSchema = new mongoose.Schema(
     photo: {
       type: String,
     },
-    province: {
+    region: {
       type: String,
     },
   },
