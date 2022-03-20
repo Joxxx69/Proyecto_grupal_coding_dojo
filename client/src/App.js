@@ -1,6 +1,6 @@
-import logo from "./logo.svg";
-import "./App.css";
-import CarouselDisplay from "./components/CarouselDisplay";
+import logo from './logo.svg';
+import './App.css';
+import CarouselDisplay from './components/CarouselDisplay'
 
 function App() {
   return (
