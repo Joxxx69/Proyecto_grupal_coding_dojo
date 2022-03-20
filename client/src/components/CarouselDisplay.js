@@ -1,0 +1,53 @@
+import React, { useState, useEffect } from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import axios from "axios";
+const responsive = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 3,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+const CarouselDisplay = () => {
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:8000/api/getAllCategories").then((res) => {
+      setCategories(res.data);
+      console.log(categories);
+    });
+  }, []);
+
+  return (
+    <Carousel responsive={responsive}>
+      {categories.map((val, idx) => {
+        return (
+          <div className="card" style={{ width: "18rem" }}>
+            <img
+              style={{ height: "12rem" }}
+              className="card-img-top"
+              src={val.photoUrl}
+              alt="Card image cap"
+            ></img>
+            <div className="card-body">
+              <h5 className="card-title">{val.nameCategory}</h5>
+            </div>
+          </div>
+        );
+      })}
+    </Carousel>
+  );
+};
+export default CarouselDisplay;
