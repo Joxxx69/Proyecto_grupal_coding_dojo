@@ -1,6 +1,9 @@
 import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
+import './platerandom.css'
+import Logo from '../images/logo_ninja.webp'
+
 
 
 const PlateRandom = () => {
@@ -32,12 +35,6 @@ const PlateRandom = () => {
         })
         .catch(err => console.log('there was an error', err))
 
-        axios.get(`http://localhost:8000/api/getAll`)
-        .then(({data})=> {
-          console.log(data);
-          setList(data);
-        })
-        .catch(err => console.log(err))
 
     };
 
@@ -60,27 +57,42 @@ const PlateRandom = () => {
 
 
     return (
-      <div className='container px-5 mt-4 border '>
-        <h2 className="mb-3 text-center">Search by ingredients</h2>
-        <form className="col-4 d-inline-block p-3 mb-4 " onSubmit={Submit}>
-          {InputsForm.map((input, idx) => (
-            <div className="form-group" key={idx}>
-              <label className="text-muted ">{input.label}</label>
-              <input required type={input.type} className="form-control p-2"
-                value={input.value} name={input.name}  onChange={IngredientChange}
-              />
+      <div className='container mt-4 border'>
+        <h2 className="mb-3 mt-3 text-center">Search by ingredients</h2>
+        <div className='offset-2 mb-4 '>
+          <form className="col-4 d-inline-block p-3 mb-4 card-cont " onSubmit={Submit}>
+            {InputsForm.map((input, idx) => (
+              <div className="form-group" key={idx}>
+                <label className="text-muted ">{input.label}</label>
+                <input required type={input.type} className="form-control p-2"
+                  value={input.value} name={input.name}  onChange={IngredientChange}
+                />
+              </div>
+            ))}
+            <div className="mt-4 col-3 ">  
+              <input className="btn btn-primary col-12 p-2 font-weight-bold text-center" type={"submit"} value={"Search"} />
             </div>
-          ))}
-          <div className="mt-4 col-3 ">  
-            <input className="btn btn-primary col-12 p-2 font-weight-bold text-center" type={"submit"} value={"Search"} />
+          </form>
+          <div className='p-3 card-cont'>
+            {
+              loaded === false && ( <img className='image-random' src={Logo} />)
+            }
+            {loaded &&
+              result.map((imagen, idx) =>(
+                <>
+                  <div className='img-cont'>
+                    <img src={imagen.photo} key={idx} alt={imagen.namePlate} className={'image-random'} />
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                  </div>
+                </>
+
+              ))
+            }
           </div>
-        </form>
-        <div className='m-2 d-inline-block align-top p-3'>
-          {loaded &&
-            result.map((imagen, idx) =>(
-              <img src={imagen.photo} key={idx} alt={imagen.namePlate} style={{maxHeight:'400px', maxWidth:'400px'}} />
-            ))
-          }
         </div>
       </div>
       );
