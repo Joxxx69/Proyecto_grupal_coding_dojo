@@ -25,6 +25,10 @@ const PlateRandom = () => {
         .then(({data})=> console.log(data))
         .catch(err => console.log('there was an error', err))
 
+        axios.get(`http://localhost:8000/api/getAll`)
+        .then(({data})=> console.log(data))
+        .catch(err => console.log(err))
+
     };
 
     const InputsForm=[
