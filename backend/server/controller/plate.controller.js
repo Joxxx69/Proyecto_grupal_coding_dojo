@@ -7,7 +7,7 @@ const _ = require('lodash')
 const randomPlate = (req, res) => {
   const { ing1, ing2, ing3 } = req.params;
   // sample me genera uno doucmento aleatorio y all hace coincidan todos los elementos.
-  Plate.aggregate([{ $match: { ingredients: { $all: [ing1, ing2, ing3] } } }])
+  Plate.aggregate([{ $match: { ingredients: { $all: [ing1, ing2, ing3] } } },{$lookup:{from:'categories', localField:'category',foreignField:'_id', as:'category'}}])
     .sample(1)
     .then(plateRandom =>{
       // el condicional me devuelve un plato aleatorio en caso que ninguno de los ingredientes coincidan con "$all"
@@ -16,7 +16,7 @@ const randomPlate = (req, res) => {
       // se utiliza lodash para saber si tengo un objeto vacio
       if(_.isEmpty(plateRandom)){
         console.log('2')
-        Plate.aggregate([{ $match: { ingredients: { $in: [ing1, ing2, ing3] } } }])
+        Plate.aggregate([{ $match: { ingredients: { $in: [ing1, ing2, ing3] } } },{$lookup:{from:'categories', localField:'category',foreignField:'_id', as:'category'}}])
         .sample(1)
         .then(plate => res.json(plate)) 
         .catch(err => console.log(err))

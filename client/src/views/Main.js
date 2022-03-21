@@ -56,7 +56,7 @@ const Main = (props)=> {
             <h2>Imagenes con Nombres de Comida</h2>
             <CarouselDisplay/>
             <PlateRandom/>
-            <footer>
+            <footer className="text-center">
                 <div className="social">
                     <a href=""><i className="icon ion-social-instagram"></i></a>
                     <a href=""><i className="icon ion-social-snapchat"></i></a>
