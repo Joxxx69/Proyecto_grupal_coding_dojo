@@ -32,7 +32,7 @@ const Main = ()=> {
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><button className="dropdown-item" >10 - 20 minutos</button></li>
                             <li><button className="dropdown-item" >20 - 30 minutos</button></li>
-                            <li><button className="dropdown-item" >30-40 minutos</button></li>
+                            <li><button className="dropdown-item" >30 - 40 minutos</button></li>
                         </ul>
                         </li>
                         <li className="nav-item">
