@@ -104,9 +104,10 @@ const CarouselDisplay = () => {
                           elit. Quisque rhoncus dui sit amet mi mollis, id
                           pellentesque leo gravida.
                         </p>
-                        <a href="#" className="btn btn-outline-info">
+                        {/* <a href="#" className="btn btn-outline-info">
                           Favorito
-                        </a>
+                        </a> */}
+                        <h4>Porciones: {val.portions} </h4>
                       </div>
                     </div>
                   </div>
