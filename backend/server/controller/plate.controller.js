@@ -18,7 +18,7 @@ const randomPlate = (req, res) => {
         console.log('2')
         Plate.aggregate([{ $match: { ingredients: { $in: [ing1, ing2, ing3] } } }])
         .sample(1)
-        .then(plate => res.json(plate))
+        .then(plate => res.json(plate)) 
         .catch(err => console.log(err))
       }else{
         res.json(plateRandom);
@@ -55,6 +55,7 @@ const updatePlate = (request, response) => {
 //getOne -- Jean Pierre
 const getPlateById = (req, res) => {
   Plate.findOne({ _id: req.params.id })
+  .populate('category')
     .then((plate) => res.json(plate))
     .catch((err) => res.status(400).json(err));
 };
@@ -62,6 +63,7 @@ const getPlateById = (req, res) => {
 //getAll -- jean pirre
 const getAll = (req, res) => {
   Plate.find()
+  .populate('category')
     .then((plates) => res.json(plates))
     .catch((err) => console.log(err));
 };

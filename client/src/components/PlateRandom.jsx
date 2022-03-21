@@ -5,6 +5,7 @@ import { useState } from 'react';
 
 const PlateRandom = () => {
 
+    const [list, setList]= useState([]);
     const [ingredients, setIngredients]=useState({
         ingredient1:'',
         ingredient2:'',
@@ -22,14 +23,19 @@ const PlateRandom = () => {
     const Submit = (e) => {
         e.preventDefault();
         axios.get(`http://localhost:8000/api/getRandom/${ingredient1}/${ingredient2}/${ingredient3}`)
-        .then(({data})=> console.log(data))
+        .then(({data})=> {console.log(data)})
         .catch(err => console.log('there was an error', err))
 
         axios.get(`http://localhost:8000/api/getAll`)
-        .then(({data})=> console.log(data))
+        .then(({data})=> {
+          console.log(data);
+          setList(data);
+        })
         .catch(err => console.log(err))
 
     };
+
+    console.log(list)
 
     const InputsForm=[
         {name:"ingredient1" , value: ingredient1, type:"text", label: "ingredient 1:"},
