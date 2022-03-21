@@ -4,11 +4,18 @@
 import PlateRandom from "../components/PlateRandom";
 import CarouselDisplay from '../components/CarouselDisplay'
 
-const Main = ()=> {
+
+const Main = (props)=> {
 
     return (
         <div className="container py-4">
-            <h2>Recetas Ninja</h2>
+            
+            <div className="d-flex ">
+                <img src={props.image_Logo}  alt="logo" width="100" height="100"/> 
+                <h2 className="align-self-center mx-auto pe-5">Recetas Ninja</h2>
+
+            </div>
+        
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <button type="button" className="btn btn-light" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -49,6 +56,15 @@ const Main = ()=> {
             <h2>Imagenes con Nombres de Comida</h2>
             <CarouselDisplay/>
             <PlateRandom/>
+            <footer>
+                <div className="social">
+                    <a href=""><i className="icon ion-social-instagram"></i></a>
+                    <a href=""><i className="icon ion-social-snapchat"></i></a>
+                    <a href=""><i className="icon ion-social-twitter"></i></a>
+                    <a href=""><i className="icon ion-social-facebook"></i></a>
+                </div>
+                <p className="copyright">Recetas Ninja © 2022</p>
+            </footer>
         </div>
         //Lo subo para que vean como esta pero ya le pongo un logo, las otras ventanas y un footer y si alcanzo le pongo colores
     )
