@@ -61,8 +61,8 @@ const PlateRandom = () => {
 
     return (
       <div className='container px-5 mt-4 border '>
-        <h2 className="mb-3">Search by ingredients</h2>
-        <form className="col-4 d-inline-block" onSubmit={Submit}>
+        <h2 className="mb-3 text-center">Search by ingredients</h2>
+        <form className="col-4 d-inline-block p-3 mb-4 " onSubmit={Submit}>
           {InputsForm.map((input, idx) => (
             <div className="form-group" key={idx}>
               <label className="text-muted ">{input.label}</label>
@@ -71,12 +71,16 @@ const PlateRandom = () => {
               />
             </div>
           ))}
-          <div className="mt-4">  
-            <input className="btn btn-primary col-12 p-2 font-weight-bold" type={"submit"} value={"Search"} />
+          <div className="mt-4 col-3 ">  
+            <input className="btn btn-primary col-12 p-2 font-weight-bold text-center" type={"submit"} value={"Search"} />
           </div>
         </form>
         <div className='m-2 d-inline-block align-top p-3'>
-          <img src="" alt=""  style={{maxHeight:'400px', maxWidth:'300px'}} />
+          {loaded &&
+            result.map((imagen, idx) =>(
+              <img src={imagen.photo} key={idx} alt={imagen.namePlate} style={{maxHeight:'400px', maxWidth:'400px'}} />
+            ))
+          }
         </div>
       </div>
       );
