@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
+
 const responsive = {
+
   superLargeDesktop: {
     // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
@@ -21,12 +23,14 @@ const responsive = {
     items: 1,
   },
 };
+
 const CarouselDisplay = () => {
   const [categories, setCategories] = useState([]);
+
   useEffect(() => {
     axios.get("http://localhost:8000/api/getAllCategories").then((res) => {
       setCategories(res.data);
-      console.log(categories);
+      //console.log(categories);
     });
   }, []);
 

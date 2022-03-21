@@ -1,13 +1,10 @@
-import logo from "./logo.svg";
 import "./App.css";
-import CarouselDisplay from "./components/CarouselDisplay";
-import PlateRandom from "./components/PlateRandom";
-
+import Main from './views/Main'
 
 function App() {
   return (
     <div className="App">
-      <PlateRandom></PlateRandom>
+      <Main/>
     </div>
   );
 }
