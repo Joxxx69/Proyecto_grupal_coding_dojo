@@ -1,5 +1,6 @@
 .card-cont {
-    width: 435px;
+    /* min-width: 435px; */
+    min-width: 230px;
     height: 330px;
     margin: 10px 0 40px 0;
     padding: 20px 5px;
@@ -15,6 +16,6 @@
 }
 
 .img-cont{
-    width: 400px;
+    max-width: 400px;
     height: 175px;
 }

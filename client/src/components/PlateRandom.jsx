@@ -58,8 +58,8 @@ const PlateRandom = () => {
     return (
       <div className='container mt-4 border'>
         <h2 className="mb-3 mt-3 text-center">Search by ingredients</h2>
-        <div className='offset-2 mb-4 '>
-          <form className="col-4 d-inline-block p-3 mb-4 card-cont " onSubmit={Submit}>
+        <div className=' d-flex justify-content-center mb-4 '>
+          <form className="d-inline-block p-3 mb-4 card-cont " onSubmit={Submit}>
             <h3>Choose the main ingredients</h3>
             {InputsForm.map((input, idx) => (
               <div className="form-group" key={idx}>
@@ -70,7 +70,7 @@ const PlateRandom = () => {
               </div>
             ))}
             <div className="mt-3 col-3 ">  
-              <input className="btn btn-primary col-12 p-2 font-weight-bold text-center" type={"submit"} value={"Search"} />
+              <input className="btn btn-primary col-12 p-2 text-center" type={"submit"} value={"Search"} />
             </div>
           </form>
           <div className='p-3 card-cont'>
