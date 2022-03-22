@@ -128,6 +128,16 @@ const getPlateByName = (request, response) => {
     .catch((err) => response.json(err));
 };
 
+const SearchName = (req,res,next) => {
+
+  const {nameProduct}= req.params;
+  
+  // Furniture.aggregate([{$match:{nameFurniture:{$regex:nameProduct}}}])
+  Furniture.find({nameFurniture:{$regex:nameProduct}})
+  .then(furniture => res.json(furniture))
+  .catch(err=> {console.log('exite un error',err); next()})
+}
+
 // genere un plato ramdon --- depende de la region -- Santiago
 // seria de genrar una llista filtrada y obtener un id aleatorio
 
