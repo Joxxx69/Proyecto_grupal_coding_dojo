@@ -1,9 +1,8 @@
 .card-cont {
     width: 435px;
     height: 330px;
-    /* margin: 80px 0 40px 0; */
-    /* padding: 20px 5px; */
-    /* text-align: center; */
+    margin: 10px 0 40px 0;
+    padding: 20px 5px;
     display: inline-block;
     vertical-align: top;
     box-shadow: 0 15px 30px 0 rgba(0,0,0,.11), 0 5px 15px 0 rgba(0,0,0,.08);
@@ -12,6 +11,7 @@
 .image-random{
     height: 100%;
     width: 100%;
+    border-radius: 0.5rem;
 }
 
 .img-cont{

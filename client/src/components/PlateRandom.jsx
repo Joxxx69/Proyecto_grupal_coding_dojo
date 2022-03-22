@@ -1,8 +1,7 @@
 import axios from 'axios';
-import React from 'react';
-import { useState } from 'react';
-import './platerandom.css'
+import React,{useState} from 'react';
 import Logo from '../images/logo_ninja.webp'
+import './platerandom.css'
 
 
 
@@ -78,18 +77,29 @@ const PlateRandom = () => {
               loaded === false && ( <img className='image-random' src={Logo} />)
             }
             {loaded &&
-              result.map((imagen, idx) =>(
-                <>
+              result.map((image, idx) =>(
+                <div key={idx}>
                   <div className='img-cont'>
-                    <img src={imagen.photo} key={idx} alt={imagen.namePlate} className={'image-random'} />
+                    <img src={image.photo} key={idx} alt={image.namePlate} className={'image-random'} />
                   </div>
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </>
-
+                  <ul className='p-3 m-0'>
+                    <li className='d-block text-center'>
+                      <h5 className='text-uppercase'>{image.nameplate}</h5>
+                    </li>
+                    <li className=' d-inline-block mx-3'>
+                      <span>{image.time} 12 Minutes </span>
+                      <i className="material-icons-outlined align-bottom"> query_builder</i>  
+                    </li>
+                    <li className='d-inline-block mx-2 '>
+                      <span> 3 {image.portions} Porsions </span>
+                      <i className="material-icons-outlined align-bottom"> people</i>  
+                    </li>
+                    <li className='d-inline-block mx-3 '>
+                      <span className='text-capitalize'>{image.category[0].nameCategory} </span>
+                      <i className="material-icons-outlined align-bottom"> restaurant</i>  
+                    </li>
+                  </ul>
+                </div>
               ))
             }
           </div>
