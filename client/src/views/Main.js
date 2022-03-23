@@ -6,6 +6,19 @@ import CarouselDisplay from "../components/CarouselDisplay";
 import Logo from '../images/logo_ninja.webp'
 import Navbar from "../components/Navbar";
 
+const Main = () => { 
+
+
+    return(
+        <Navbar>
+            <h2>Categorias:</h2>
+            <CarouselDisplay />
+            <PlateRandom />
+        </Navbar>
+    );
+ }
+export default Main;
+
 
 // const Main = () => {
 //     return (
@@ -112,16 +125,4 @@ import Navbar from "../components/Navbar";
 //     );
 // };
 
-
-const Main = () => { 
-
-
-    return(
-        <Navbar>
-            <h2>Categorias:</h2>
-            <CarouselDisplay />
-            <PlateRandom />
-        </Navbar>
-    );
- }
-export default Main;
+//export default Main;
