@@ -1,7 +1,9 @@
 import "./App.css";
 import Main from './views/Main'
 import Logo from './images/logo_ninja.webp'
-import { Routes} from 'react-router-dom'
+import React from 'react';
+import {  Route, Routes } from 'react-router-dom'
+// import Main from './views/Main'
 
 
 function App() {
@@ -9,6 +11,7 @@ function App() {
     <div className="App">
       <Main image_Logo={Logo}/>
       <Routes>
+        <Route path="/" element={<Main/>}></Route>
       </Routes>
     </div>
   );
