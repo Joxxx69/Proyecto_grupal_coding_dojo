@@ -83,7 +83,7 @@ const Navbar = ({children}) => {
                 </div>
             </nav>
             {children}
-            <footer>
+            <footer className='text-center'>
                 <div className="social">
                     <a href="">
                         <i className="icon ion-social-instagram"></i>
