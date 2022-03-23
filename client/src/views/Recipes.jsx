@@ -17,6 +17,8 @@ const Recipes = (params) => {
 
     console.log(gte,lte);
     
+
+    
     return(
         <Navbar>
             <h2 className='mt-2 text-center'>Cooking recipes between {gte} to {lte} minutes</h2>
@@ -25,3 +27,7 @@ const Recipes = (params) => {
 }
 
 export default Recipes;
+
+
+
+
