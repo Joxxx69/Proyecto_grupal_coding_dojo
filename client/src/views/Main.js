@@ -3,12 +3,14 @@
 //import {Link} from '@reach/router'
 import PlateRandom from "../components/PlateRandom";
 import CarouselDisplay from "../components/CarouselDisplay";
+import Logo from '../images/logo_ninja.webp'
 
-const Main = (props) => {
+
+const Main = () => {
     return (
         <div className="container py-4">
             <div className="d-flex ">
-                <img src={props.image_Logo} alt="logo" width="100" height="100" />
+                <img src={Logo} alt="logo" width="100" height="100" />
                 <h2 className="align-self-center mx-auto pe-5">Recetas Ninja</h2>
             </div>
 
