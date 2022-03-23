@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import Logo from '../images/logo_ninja.webp'
 
 const Navbar = ({children}) => {
@@ -52,13 +53,13 @@ const Navbar = ({children}) => {
                                 </button>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
-                                        <button className="dropdown-item">10 - 20 minutos</button>
+                                        <Link className="dropdown-item" to={`/recipes/times/${10}/${20}`}>10 - 20 minutes</Link>
                                     </li>
                                     <li>
-                                        <button className="dropdown-item">20 - 30 minutos</button>
+                                        <Link className="dropdown-item" to={`/recipes/times/${20}/${30}`}>20 - 30 minutes</Link>
                                     </li>
                                     <li>
-                                        <button className="dropdown-item">30 - 40 minutos</button>
+                                        <Link className="dropdown-item" to={`/recipes/times/${30}/${60}`}>30 - 60 minutes</Link>
                                     </li>
                                 </ul>
                             </li>
