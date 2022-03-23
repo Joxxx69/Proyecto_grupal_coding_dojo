@@ -99,22 +99,15 @@ const updateIsFavoritePlato = (req, res) => {
 
 // se realiza el cambio con patch se utiliza $set
 
-//time
+//time --> santiago
 
-const priceFurniture = (req, res, next) => {
-  const { gte, lte, categoryId } = req.params;
-  console.log(categoryId);
+const recipesTimes = (req, res, next) => {
+  const { gte, lte } = req.params;
   const lowerLimit = parseFloat(gte);
   const upperLimit = parseFloat(lte);
   console.log(gte, "esta es la ceparacion", lte);
-  // Furniture.aggregate([{$match:{$and:[{price:{$gte:lowerLimit, $lte:upperLimit}}]}}])
-  Furniture.find({
-    $and: [
-      { price: { $gte: lowerLimit, $lte: upperLimit } },
-      { category: categoryId },
-    ],
-  })
-    .then((furniture) => res.json(furniture))
+  Plate.aggregate([{$match:{$and:[{time:{$gte:lowerLimit, $lte:upperLimit}}]}}])
+    .then(recipes => res.json(recipes))
     .catch((err) => {
       console.log("exite un error", err);
       next();
@@ -166,10 +159,8 @@ module.exports = {
   deletePlate,
   updatePlate,
   getPlateByName,
-  platesNews
+  platesNews,
+  recipesTimes
 };
 
-const creacion = new Plate();
-
-console.log(creacion)
 

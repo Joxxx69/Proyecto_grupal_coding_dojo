@@ -13,4 +13,7 @@ module.exports = function (app) {
   app.get("/api/plate/:id", controller.getPlateById);
   app.post("/api/new_plate", controller.createPlate);
   app.patch("/api/edit_favorite_plate/:id", controller.updateIsFavoritePlato);
+
+  //rutas---> santiago
+  app.get("/api/recipes/times/:gte/:lte",controller.recipesTimes);
 };
