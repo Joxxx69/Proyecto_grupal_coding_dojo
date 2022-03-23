@@ -2,6 +2,7 @@ import "./App.css";
 import Main from './views/Main'
 import React from 'react';
 import {  Route, Routes } from 'react-router-dom'
+import Recipes from "./views/Recipes";
 
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Main/>}></Route>
+        <Route path="/recipes/News" element={<Recipes/>}></Route>
       </Routes>
     </div>
   );
