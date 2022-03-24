@@ -94,7 +94,7 @@ console.log('seg: ', fecha.getSeconds())
 
 
 
-//update-favorite --. pueda cambiar a true y false ---jean pierre
+//update-favorite -- le agregue un $set y value ---> santiago
 const updateIsFavoritePlato = (req, res) => {
   const {id, logica} =req.params;
   const value = (logica == 'true'); 
@@ -114,7 +114,7 @@ const recipesTimes = (req, res, next) => {
   console.log(gte, "esta es la ceparacion", lte);
   // Plate.aggregate([{$match:{$and:[{time:{$gte:lowerLimit, $lte:upperLimit}}]}}])
   Plate.find({$and:[{time:{$gte:lowerLimit, $lte:upperLimit}}]})
-  .populate('category')
+    .populate('category')
     .then(recipes => res.json(recipes))
     .catch((err) => {
       console.log("exite un error", err);
@@ -152,6 +152,19 @@ const randomPlateRegion = (req, res) => {
     .catch((err) => console.log(err));
 };
 
+// favorites
+
+const FavoritesRecipes = (req,res) => {
+  Plate.find({isFavorite:true})
+  .then(favorites => res.json(favorites))
+  .catch(err=>res.status(400).json(err))
+}
+
+
+
+
+
+
 ////------------------------------------ proximas actualizaciones---------------------------
 // busqueda por nombre en tiempo real
 // implementar react-infinite-scroll
@@ -170,7 +183,8 @@ module.exports = {
   getPlateByName,
   platesNews,
   recipesTimes,
-  searchName
+  searchName,
+  FavoritesRecipes
 };
 
 
