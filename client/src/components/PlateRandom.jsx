@@ -60,7 +60,7 @@ const PlateRandom = () => {
       <div className='container mt-4 border'>
         <h2 className="mb-3 mt-3 text-center">Search by ingredients</h2>
         <div className=' d-flex justify-content-center mb-4 '>
-          <form className="d-inline-block p-3 mb-4 card-cont " onSubmit={Submit}>
+          <form className=" p-3 card-cont " onSubmit={Submit}>
             <h3>Choose the main ingredients</h3>
             {InputsForm.map((input, idx) => (
               <div className="form-group" key={idx}>
@@ -76,7 +76,7 @@ const PlateRandom = () => {
           </form>
           <div className='p-3 card-cont'>
             {
-              loaded === false && ( <img className='image-random' src={Logo} />)
+              loaded === false && ( <img className='image-random ' src={Logo} />)
             }
             {loaded &&
               result.map((image, idx) =>(
