@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../images/logo_ninja.webp";
+import useAuth from '../hooks/useAuth'
 
 const Navbar = ({ children }) => {
+  const {isAuthed, logout} =useAuth();
   const [search, setSearch] =useState([]);
   let navigate = useNavigate();
+
+  const handleclick =()=>{
+    logout();
+  }
 
   return (
     <div className="container py-4">
@@ -46,15 +52,19 @@ const Navbar = ({ children }) => {
                   Recetas
                 </button>
               </li>
-              <li className="nav-item">
-                <button
-                  type="button"
-                  className="btn btn-light"
-                  onClick={(e) => navigate("/add-recipe")}
-                >
-                  Nuevas Recetas
-                </button>
-              </li>
+              {
+                isAuthed() &&(
+                  <li className="nav-item">
+                    <button
+                      type="button"
+                      className="btn btn-light"
+                      onClick={(e) => navigate("/add-recipe")}
+                    >
+                      Añadir Recetas
+                    </button>
+                  </li>
+                )
+              }
               <li className="nav-item dropdown">
                 <button  type="button" className="btn btn-light" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false"  >
                   Tiempo
@@ -129,20 +139,36 @@ const Navbar = ({ children }) => {
             </form>
             <div className="nav-item dropdown col-1 text-center">
               <button  type="button" className="btn btn-light mx-auto " id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false"  >
-                <i className="material-icons-outlined align-bottom" style={{"font-size": "35px"}} >account_circle</i>
+                <i className="material-icons-outlined align-bottom" style={{"fontSize": "35px"}} >account_circle</i>
                 
               </button>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <Link className="dropdown-item" to={`/signup`} >
-                      Sign up
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to={`/login`} >
-                      Sign in
-                    </Link>
-                  </li>
+                  {
+                    isAuthed() === undefined &&(
+                      <>
+                        <li>
+                          <Link className="dropdown-item" to={`/signup`} >
+                            Sign up
+                          </Link>
+                        </li>
+                        <li>
+                          <Link className="dropdown-item" to={`/signin`} >
+                            Sign in
+                          </Link>
+                        </li>
+                      </>
+                    )
+                  }
+                  {
+                    isAuthed() &&(
+                      <li>
+                        <Link className="dropdown-item" to={`/`}  onClick={handleclick} >
+                          Logout
+                        </Link>
+                      </li>
+                    )
+                  }
+                  
                 </ul>
             </div>
           </div>
