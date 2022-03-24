@@ -82,7 +82,7 @@ const PlateRandom = () => {
               result.map((image, idx) =>(
                 <div key={idx}>
                   <div className='img-cont mx-3 mt-1'>
-                    <img src={image.photo} key={idx} alt={image.namePlate} className={'image-random'} />
+                    <img src={image.photo} key={idx} alt={image.namePlate} className={'image-random d-block img-fluid '} />
                   </div>
                   <ul className='px-3 pt-2 pb-3 m-0'>
                     <li className='d-block text-center'>

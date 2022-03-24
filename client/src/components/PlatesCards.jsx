@@ -13,7 +13,7 @@ const CardsPlates = ({listRecipes}) => {
                             <div key={idx} className='mt-4 col-lg-4 col-md-6 col-sm-6 '>
                                 <div className='card'>
                                     <div className='img-cont mx-3 mt-3'>
-                                        <img src={recipe.photo} key={idx} alt={recipe.namePlate} className={'image-random'} />
+                                        <img src={recipe.photo} key={idx} alt={recipe.namePlate} className={'image-random d-block img-fluid '} />
                                     </div>
                                     <ul className='p-3 m-0'>
                                         <li className='d-block text-center'>
