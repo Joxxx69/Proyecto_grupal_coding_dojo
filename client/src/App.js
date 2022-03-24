@@ -2,7 +2,7 @@ import "./App.css";
 import Main from "./views/Main";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Recipes from "./views/Recipes";
+import Recipes from "./views/RecipesTimes";
 import PlateForm from "./components/PlateForm";
 import PlatesByCategory from "./views/PlatesByCategory";
 import AllRecipes from "./views/AllRecipes";
