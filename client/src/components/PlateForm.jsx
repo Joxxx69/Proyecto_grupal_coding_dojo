@@ -10,12 +10,8 @@ const PlateForm = () => {
   const [nameplate, setNamePlate] = useState("");
   const [prepTime, setPrepTime] = useState("");
   const [portions, setPortions] = useState("");
-  const [proc1, setProc1] = useState("");
-  const [proc2, setProc2] = useState("");
-  const [proc3, setProc3] = useState("");
-  const [ing1, setIng1] = useState("");
-  const [ing2, setIng2] = useState("");
-  const [ing3, setIng3] = useState("");
+  const [procedure, setProcedure] = useState("");
+  const [ingredients, setIngredients] = useState("");
   const [photoUrl, setPhotoUrl] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [categoryIsCreated, setCategoryIsCreated] = useState(false);
@@ -45,8 +41,8 @@ const PlateForm = () => {
     e.preventDefault();
     axios.post("http://localhost:8000/api/createPlate", {
       nameplate: nameplate,
-      procedure: [proc1, proc2, proc3],
-      ingredients: [ing1, ing2, ing3],
+      procedure: procedure.split(".").map((val, idx) => val.trim()),
+      ingredients: ingredients.split(",").map((val, idx) => val.trim()),
       category: categoryId,
       photo: photoUrl,
       region: selectedRegion,
@@ -72,6 +68,7 @@ const PlateForm = () => {
                 id="name"
                 aria-describedby="emailHelp"
                 onChange={(e) => setNamePlate(e.target.value)}
+                placeholder="Nombre de la receta"
               ></input>
             </div>
             <div className="form-group col-3">
@@ -82,6 +79,7 @@ const PlateForm = () => {
                 type="number"
                 className="form-control"
                 id="prepTime"
+                placeholder="Tiempo"
                 onChange={(e) => setPrepTime(e.target.value)}
               ></input>
             </div>
@@ -94,6 +92,7 @@ const PlateForm = () => {
                 className="form-control"
                 id="portions"
                 aria-describedby="emailHelp"
+                placeholder="Porciones"
                 onChange={(e) => setPortions(e.target.value)}
               ></input>
             </div>
@@ -107,50 +106,28 @@ const PlateForm = () => {
               <textarea
                 className="form-control"
                 id="exampleFormControlTextarea1"
-                placeholder="Paso 1"
-                rows="3"
-                onChange={(e) => setProc1(e.target.value)}
+                placeholder="Procedimiento"
+                rows="8"
+                onChange={(e) => setProcedure(e.target.value)}
               ></textarea>
-              <textarea
-                className="form-control"
-                id="exampleFormControlTextarea1"
-                placeholder="Paso 2"
-                rows="3"
-                onChange={(e) => setProc2(e.target.value)}
-              ></textarea>
-              <textarea
-                className="form-control"
-                id="exampleFormControlTextarea1"
-                placeholder="Paso 3"
-                rows="3"
-                onChange={(e) => setProc3(e.target.value)}
-              ></textarea>
+              <div id="emailHelp" class="form-text">
+                Separe cada paso con un punto (".")
+              </div>
             </div>
             <div className="form-group col-6">
               <label className="fw-bold" htmlFor="ingredients">
                 Ingredientes:
               </label>
-              <input
+              <textarea
                 type="text"
                 className="form-control"
                 id="ingredients"
-                placeholder="Ingrediente 1"
-                onChange={(e) => setIng1(e.target.value)}
-              ></input>
-              <input
-                type="text"
-                className="form-control"
-                id="ingredients"
-                placeholder="Ingrediente 2"
-                onChange={(e) => setIng2(e.target.value)}
-              ></input>
-              <input
-                type="text"
-                className="form-control"
-                id="ingredients"
-                placeholder="Ingrediente 3"
-                onChange={(e) => setIng3(e.target.value)}
-              ></input>
+                placeholder="Ingredientes"
+                onChange={(e) => setIngredients(e.target.value)}
+              ></textarea>
+              <div id="emailHelp" class="form-text">
+                Separe los ingredientes con una coma (",")
+              </div>
 
               <div className="form-group">
                 <label className="fw-bold" htmlFor="category">
@@ -199,6 +176,7 @@ const PlateForm = () => {
               className="form-control"
               id="photo"
               aria-describedby="emailHelp"
+              placeholder="Url de la imágen"
               onChange={(e) => setPhotoUrl(e.target.value)}
             ></input>
           </div>
