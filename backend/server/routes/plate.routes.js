@@ -10,7 +10,7 @@ module.exports = function (app) {
   app.get("/api/plate/one/:id", controller.getPlateById);
 
   app.post("/api/new_plate", controller.createPlate);
-  app.patch("/api/edit_favorite_plate/:id", controller.updateIsFavoritePlato);
+  app.patch("/api/edit_favorite_plate/:id/:logica", controller.updateIsFavoritePlato);
   app.get("/api/recipes/times/:gte/:lte",controller.recipesTimes);
   app.get("/api/getRandom/:ing1/:ing2/:ing3", controller.randomPlate);
 

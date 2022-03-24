@@ -10,21 +10,40 @@ const RecipeOne = () => {
     const [recipe, setRecipe] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const [favorite, setFavorite] = useState(false);
+    const [stateFavorite, setEstateFavorite] = useState();
     const { id } = useParams();
-    console.log(id);
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/plate/one/${id}`)
             .then(({ data }) => {
-                console.log(data);
                 setRecipe(data);
+                setEstateFavorite(data.isFavorite)
                 setLoaded(true);
             })
             .catch((err) => console.log(err));
-    }, []);
+    },[stateFavorite]);
 
-    console.log(favorite)
+    console.log('este es el estafo',stateFavorite);
 
+    const isFavorite = () => (
+        favorite? <i className="bi bi-bookmark-fill"></i>:<i className="bi bi-bookmark"></i>
+    )
+
+    const favoriteSubmit =(e)=>{
+        e.preventDefault();
+        const copy = recipe;
+        console.log(copy);
+        axios.patch(`http://localhost:8000/api/edit_favorite_plate/${id}/${stateFavorite}`)
+        .then(({data}) => console.log(data.isFavorite))
+        .catch(err => console.log(err))
+    }
+
+    const favoritePlate =()=>(
+        <form onSubmit={favoriteSubmit}>
+            <button type="submit" className="btn btn-success" onClick={()=> setEstateFavorite(!stateFavorite)}>booleano</button>
+        </form>
+    )
+    
 
     return (
         <Navbar>
@@ -38,11 +57,7 @@ const RecipeOne = () => {
                                         <div className="col-1"/>
                                         <h2 className='text-uppercase text-center col-9'>{recipe.nameplate}</h2>
                                         <button className="btn btn-secondary col-1" onClick={()=>setFavorite(!favorite)}>
-                                            {
-                                                favorite?   <i class="bi bi-bookmark-fill"></i>
-                                                            :
-                                                            <i class="bi bi-bookmark"></i>
-                                            }
+                                            {isFavorite()}
                                         </button>
                                     </li>
                                     <li className=' list-inline-item'>
@@ -95,6 +110,7 @@ const RecipeOne = () => {
                     </div>
                 </div>
             )}
+            {favoritePlate()}
         </Navbar>
     );
 };
