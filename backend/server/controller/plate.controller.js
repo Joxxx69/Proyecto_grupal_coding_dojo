@@ -1,5 +1,5 @@
 const Plate = require("../models/plate.model");
-const _ = require('lodash')
+const _ = require("lodash");
 
 /// para verle todos como hacer este controlor
 
@@ -7,24 +7,44 @@ const _ = require('lodash')
 const randomPlate = (req, res) => {
   const { ing1, ing2, ing3 } = req.params;
   // sample me genera uno doucmento aleatorio y all hace coincidan todos los elementos.
-  Plate.aggregate([{ $match: { ingredients: { $all: [ing1, ing2, ing3] } } },{$lookup:{from:'categories', localField:'category',foreignField:'_id', as:'category'}}])
+  Plate.aggregate([
+    { $match: { ingredients: { $all: [ing1, ing2, ing3] } } },
+    {
+      $lookup: {
+        from: "categories",
+        localField: "category",
+        foreignField: "_id",
+        as: "category",
+      },
+    },
+  ])
     .sample(1)
-    .then(plateRandom =>{
+    .then((plateRandom) => {
       // el condicional me devuelve un plato aleatorio en caso que ninguno de los ingredientes coincidan con "$all"
       // el platon aleatorio sera generado con "$in"
-      console.log('1')
+      console.log("1");
       // se utiliza lodash para saber si tengo un objeto vacio
-      if(_.isEmpty(plateRandom)){
-        console.log('2')
-        Plate.aggregate([{ $match: { ingredients: { $in: [ing1, ing2, ing3] } } },{$lookup:{from:'categories', localField:'category',foreignField:'_id', as:'category'}}])
-        .sample(1)
-        .then(plate => res.json(plate)) 
-        .catch(err => console.log(err))
-      }else{
+      if (_.isEmpty(plateRandom)) {
+        console.log("2");
+        Plate.aggregate([
+          { $match: { ingredients: { $in: [ing1, ing2, ing3] } } },
+          {
+            $lookup: {
+              from: "categories",
+              localField: "category",
+              foreignField: "_id",
+              as: "category",
+            },
+          },
+        ])
+          .sample(1)
+          .then((plate) => res.json(plate))
+          .catch((err) => console.log(err));
+      } else {
         res.json(plateRandom);
       }
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 };
 
 // deleteOne --- Ernesto
@@ -34,16 +54,38 @@ const deletePlate = (request, response) => {
     .catch((err) => response.json(err));
 };
 
-//create  --- Jean Pierre 
+//create  --- Jean Pierre
 const createPlate = (req, res) => {
-  const { nameplate, time, portions, procedure, category, ingredients, isFavorite, photo, region } = req.body;
-  const newPlate = new Plate({ nameplate, time, portions, procedure, category, ingredients, isFavorite, photo, region });
+  const {
+    nameplate,
+    time,
+    portions,
+    procedure,
+    category,
+    ingredients,
+    isFavorite,
+    photo,
+    region,
+  } = req.body;
+  const newPlate = new Plate({
+    nameplate,
+    time,
+    portions,
+    procedure,
+    category,
+    ingredients,
+    isFavorite,
+    photo,
+    region,
+  });
 
   // newPlate.procedure = procedure.split(';');
 
-  newPlate.save()
+  newPlate
+    .save()
     .then((plate) => res.json(plate))
-    .catch((err) => console.log("there was an error", err));
+    // .catch((err) => console.log("there was an error", err));
+    .catch((err) => res.status(400).json(err));
 };
 
 //update --- Ernesto
@@ -57,9 +99,9 @@ const updatePlate = (request, response) => {
 };
 //getOne -- Jean Pierre
 const getPlateById = (req, res) => {
-  const {id}= req.params;
+  const { id } = req.params;
   Plate.findById(id)
-    .populate('category')
+    .populate("category")
     .then((plate) => res.json(plate))
     .catch((err) => res.status(400).json(err));
 };
@@ -67,7 +109,7 @@ const getPlateById = (req, res) => {
 //getAll -- jean pirre
 const getAll = (req, res) => {
   Plate.find()
-  .populate('category')
+    .populate("category")
     .then((plates) => res.json(plates))
     .catch((err) => console.log(err));
 };
@@ -75,9 +117,9 @@ const getAll = (req, res) => {
 
 //update-favorite -- le agregue un $set y value ---> santiago
 const updateIsFavoritePlato = (req, res) => {
-  const {id, logica} =req.params;
-  const value = (logica == 'true'); 
-  Plate.findByIdAndUpdate(id,{$set:{isFavorite:value}},{ new: true })
+  const { id, logica } = req.params;
+  const value = logica == "true";
+  Plate.findByIdAndUpdate(id, { $set: { isFavorite: value } }, { new: true })
     .then((updatedPlate) => res.json(updatedPlate))
     .catch((err) => res.status(400).json(err));
     
@@ -100,9 +142,9 @@ const recipesTimes = (req, res, next) => {
   const upperLimit = parseFloat(lte);
   console.log(gte, "esta es la ceparacion", lte);
   // Plate.aggregate([{$match:{$and:[{time:{$gte:lowerLimit, $lte:upperLimit}}]}}])
-  Plate.find({$and:[{time:{$gte:lowerLimit, $lte:upperLimit}}]})
-    .populate('category')
-    .then(recipes => res.json(recipes))
+  Plate.find({ $and: [{ time: { $gte: lowerLimit, $lte: upperLimit } }] })
+    .populate("category")
+    .then((recipes) => res.json(recipes))
     .catch((err) => {
       console.log("exite un error", err);
       next();
@@ -116,14 +158,16 @@ const getPlateByName = (request, response) => {
     .catch((err) => response.json(err));
 };
 
-const searchName = (req,res,next) => {
+const searchName = (req, res, next) => {
+  const { name } = req.params;
 
-  const {name}= req.params;
-  
-  Plate.find({nameplate:{$regex: name, $options : 'i'}})
-  .populate('category')
-    .then(plate => res.json(plate))
-    .catch(err=> {console.log('exite un error',err); next()})
+  Plate.find({ nameplate: { $regex: name, $options: "i" } })
+    .populate("category")
+    .then((plate) => res.json(plate))
+    .catch((err) => {
+      console.log("exite un error", err);
+      next();
+    });
 };
 
 // genere un plato ramdon --- depende de la region -- Santiago
@@ -164,7 +208,5 @@ module.exports = {
   getPlateByName,
   recipesTimes,
   searchName,
-  FavoritesRecipes
+  FavoritesRecipes, 
 };
-
-
