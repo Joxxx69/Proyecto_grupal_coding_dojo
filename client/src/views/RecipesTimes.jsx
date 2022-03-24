@@ -13,16 +13,11 @@ const Recipes = (params) => {
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/recipes/times/${gte}/${lte}`)
         .then(({data})=> {
-            console.log(data);
             setListRecipes(data);
         })
         .catch(err => console.log(err))
     },[gte,lte]);
-
-    console.log(gte,lte);
-    
-
-    
+ 
     return(
         <Navbar>
             <h2 className='mt-4 mb-0 text-center'>Cooking recipes between {gte} to {lte} minutes</h2>

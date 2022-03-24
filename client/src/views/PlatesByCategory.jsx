@@ -16,7 +16,6 @@ const PlatesByCategory = (params) => {
           res.data.filter((val) => val.category.nameCategory === categoryName)
         )
       );
-    // console.log(category);
   }, []);
 
   return (

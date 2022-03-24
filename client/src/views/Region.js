@@ -13,7 +13,6 @@ const Region = (params) => {
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/random_plate/${regionName}`)
         .then(({data})=> {
-            console.log(data);
             setListRecipes(data);
         })
         .catch(err => console.log(err))

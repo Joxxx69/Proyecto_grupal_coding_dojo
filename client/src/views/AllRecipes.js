@@ -12,7 +12,6 @@ const AllRecipes = () => {
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/getAll`)
         .then(({data})=> {
-            console.log(data);
             setListRecipes(data);
         })
         .catch(err => console.log(err))

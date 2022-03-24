@@ -13,7 +13,7 @@ const RecipesFavorites = () => {
         .then(({data})=> setListFavorites(data))
         .catch(err=> console.log(err))
     },[]);
-    console.log(listFavorites);
+
     return(
         <Navbar>
             <div className='container mt-2'>
