@@ -128,6 +128,7 @@ const updateIsFavoritePlato = (req, res) => {
 
 const FavoritesRecipes = (req,res) => {
   Plate.find({isFavorite:true})
+  .populate('category')
   .then(favorites => res.json(favorites))
   .catch(err=>res.status(400).json(err))
 }
