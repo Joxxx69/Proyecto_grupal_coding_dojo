@@ -58,7 +58,6 @@ const updatePlate = (request, response) => {
 //getOne -- Jean Pierre
 const getPlateById = (req, res) => {
   const {id}= req.params;
-  console.log(id)
   Plate.findById(id)
     .populate('category')
     .then((plate) => res.json(plate))
