@@ -32,14 +32,10 @@ const RecipeOne = () => {
 
     const favoriteSubmit =(e)=>{
         e.preventDefault();
-        const copy = recipe;
-        console.log(copy);
         axios.patch(`http://localhost:8000/api/edit_favorite_plate/${id}/${favorite}`)
         .then(({data}) => console.log('este es el valor de verdad',data.isFavorite))
         .catch(err => console.log(err))
     }
-
-    
 
     return (
         <Navbar>
