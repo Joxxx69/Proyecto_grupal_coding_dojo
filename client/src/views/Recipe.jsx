@@ -9,6 +9,7 @@ import "./recipe.css";
 const RecipeOne = () => {
     const [recipe, setRecipe] = useState([]);
     const [loaded, setLoaded] = useState(false);
+    const [favorite, setFavorite] = useState(false);
     const { id } = useParams();
     console.log(id);
 
@@ -22,6 +23,8 @@ const RecipeOne = () => {
             .catch((err) => console.log(err));
     }, []);
 
+    console.log(favorite)
+
 
     return (
         <Navbar>
@@ -31,8 +34,16 @@ const RecipeOne = () => {
                         <div className="col-md-10 offset-md-1">
                             <div className="card recipe">
                                 <ul className='p-3 m-0 text-center list-inline'>
-                                    <li className='d-block text-center'>
-                                        <h2 className='text-uppercase font-weight-bold'>{recipe.nameplate}</h2>
+                                    <li className=' row justify-content-center'>
+                                        <div className="col-1"/>
+                                        <h2 className='text-uppercase text-center col-9'>{recipe.nameplate}</h2>
+                                        <button className="btn btn-secondary col-1" onClick={()=>setFavorite(!favorite)}>
+                                            {
+                                                favorite?   <i class="bi bi-bookmark-fill"></i>
+                                                            :
+                                                            <i class="bi bi-bookmark"></i>
+                                            }
+                                        </button>
                                     </li>
                                     <li className=' list-inline-item'>
                                         <span className="h5 text-muted">{recipe.time} Minutes </span>
