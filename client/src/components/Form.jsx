@@ -46,8 +46,8 @@ const Form = (props) => {
     e.preventDefault();
     onSubmitProp({
       nameplate,
-      procedure: procedure,
-      ingredients: ingredients,
+      procedure: procedure.split(";").map((val) => val.trim()),
+      ingredients: ingredients.split(";").map((val) => val.trim()),
       category,
       photo,
       region,
@@ -58,8 +58,6 @@ const Form = (props) => {
   };
   return (
     <div>
-      <h1 className="text-center">Crea tu receta</h1>
-
       <form className="mx-auto w-50" onSubmit={onSubmitHandler}>
         <div className="row">
           <div className="form-group col-6">
