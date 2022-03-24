@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../images/logo_ninja.webp";
+import './navbar.css'
 
 const Navbar = ({ children }) => {
   const [search, setSearch] =useState([]);
@@ -132,7 +133,7 @@ const Navbar = ({ children }) => {
         </div>
       </nav>
       {children}
-      <footer className="text-center mt-3">
+      <footer className="footer-basic">
         <div className="social">
           <a href="">
             <i className="icon ion-social-instagram"></i>
