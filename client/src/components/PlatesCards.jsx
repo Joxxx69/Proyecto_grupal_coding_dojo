@@ -4,7 +4,6 @@ import './platesCards.css'
 
 const CardsPlates = ({listRecipes}) => {
     
-    console.log(listRecipes)
     return(
         <div className='container  p-4'>
                 <div className=" row">

@@ -30,6 +30,7 @@ const AddRecipe = () => {
           {err}
         </p>
       ))}
+      <h1 className="text-center">Crea tu receta</h1>
       <Form
         onSubmitProp={createRecipe}
         initialName=""

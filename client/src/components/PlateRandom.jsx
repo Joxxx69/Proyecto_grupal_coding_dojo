@@ -29,7 +29,6 @@ const PlateRandom = () => {
         e.preventDefault();
         axios.get(`http://localhost:8000/api/getRandom/${ingredient1}/${ingredient2}/${ingredient3}`)
         .then(({data})=> {
-          console.log(data.category)
           setResult(data)
           setLoaded(true)
         })
@@ -38,12 +37,10 @@ const PlateRandom = () => {
 
     };
 
-    console.log(result);
 
     if(loaded){
 
       // result.map(objectresult=> objectresult.category.map(resul => console.log(resul.nameCategory)))
-      console.log('hola')
       result.map(objectresult=> console.log(objectresult.category[0].nameCategory))
     }
 

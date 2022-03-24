@@ -58,8 +58,6 @@ const Form = (props) => {
   };
   return (
     <div>
-      <h1 className="text-center">Crea tu receta</h1>
-
       <form className="mx-auto w-50" onSubmit={onSubmitHandler}>
         <div className="row">
           <div className="form-group col-6">
