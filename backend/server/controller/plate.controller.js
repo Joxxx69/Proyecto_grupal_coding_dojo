@@ -134,8 +134,9 @@ const searchName = (req,res,next) => {
   const {name}= req.params;
   
   Plate.find({nameplate:{$regex: name, $options : 'i'}})
-  .then(plate => res.json(plate))
-  .catch(err=> {console.log('exite un error',err); next()})
+  .populate('category')
+    .then(plate => res.json(plate))
+    .catch(err=> {console.log('exite un error',err); next()})
 };
 
 // genere un plato ramdon --- depende de la region -- Santiago

@@ -14,4 +14,7 @@ module.exports = function (app) {
   app.get("/api/recipes/times/:gte/:lte",controller.recipesTimes);
   app.get("/api/getRandom/:ing1/:ing2/:ing3", controller.randomPlate);
 
+  app.get("/api/search/:name",controller.searchName);
+
+
 };
