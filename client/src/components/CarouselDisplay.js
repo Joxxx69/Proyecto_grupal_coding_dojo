@@ -46,12 +46,14 @@ const CarouselDisplay = () => {
                 alt="Card image cap"
               ></img>
               <div className="card-body">
-                <Link
-                  to={`/recipes/${val.nameCategory}`}
-                  className="card-title link-success"
-                >
-                  {val.nameCategory}
-                </Link>
+                <button className="btn btn-outline-success">
+                  <Link
+                    to={`/recipes/${val.nameCategory}`}
+                    className="card-title text-decoration-none "
+                  >
+                    {val.nameCategory}
+                  </Link>
+                </button>
               </div>
             </div>
           );
