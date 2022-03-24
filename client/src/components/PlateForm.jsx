@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "./Navbar";
 import ModalForm from "./ModalForm";
+import { useNavigate } from "react-router-dom";
 
 const PlateForm = () => {
   const [categories, setCategories] = useState([]);
@@ -15,8 +16,8 @@ const PlateForm = () => {
   const [photoUrl, setPhotoUrl] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [categoryIsCreated, setCategoryIsCreated] = useState(false);
-
   const regions = ["Costa", "Sierra", "Oriente", "Insular"];
+  let navigate = useNavigate();
   useEffect(() => {
     axios.get("http://localhost:8000/api/getAllCategories").then((res) => {
       setCategories(res.data);
@@ -39,17 +40,19 @@ const PlateForm = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:8000/api/createPlate", {
-      nameplate: nameplate,
-      procedure: procedure.split(".").map((val, idx) => val.trim()),
-      ingredients: ingredients.split(",").map((val, idx) => val.trim()),
-      category: categoryId,
-      photo: photoUrl,
-      region: selectedRegion,
-      time: prepTime,
-      portions: portions,
-      isFavorite: false,
-    });
+    axios
+      .post("http://localhost:8000/api/createPlate", {
+        nameplate: nameplate,
+        procedure: procedure.split(";").map((val, idx) => val.trim()),
+        ingredients: ingredients.split(";").map((val, idx) => val.trim()),
+        category: categoryId,
+        photo: photoUrl,
+        region: selectedRegion,
+        time: prepTime,
+        portions: portions,
+        isFavorite: false,
+      })
+      .then((res) => navigate("/"));
     // console.log(Ingredients);
   };
 
@@ -106,13 +109,13 @@ const PlateForm = () => {
               </label>
               <textarea
                 className="form-control"
-                id="exampleFormControlTextarea1"
+                id="procedure"
                 placeholder="Procedimiento"
                 rows="8"
                 onChange={(e) => setProcedure(e.target.value)}
               ></textarea>
-              <div id="emailHelp" class="form-text">
-                Separe cada paso con un punto (".")
+              <div id="emailHelp" className="form-text">
+                Separe cada paso con un punto y coma (";")
               </div>
             </div>
             <div className="form-group col-6">
@@ -126,8 +129,8 @@ const PlateForm = () => {
                 placeholder="Ingredientes"
                 onChange={(e) => setIngredients(e.target.value)}
               ></textarea>
-              <div id="emailHelp" class="form-text">
-                Separe los ingredientes con una coma (",")
+              <div id="emailHelp" className="form-text">
+                Separe los ingredientes con un punto y coma (";")
               </div>
 
               <div className="form-group">
