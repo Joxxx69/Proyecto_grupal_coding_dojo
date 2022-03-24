@@ -25,7 +25,7 @@ function App() {
         <Route path="/search/recipe/:name" element={<SearchRecipe />}></Route>
         <Route path="/recipes/random/:regionName" element={<Region/>} ></Route>
         <Route path="/favorites/recipes/list" element={<RecipesFavorites/>} ></Route>
-        <Route path="/signup/user" element={<Signup/>} />
+        <Route path="/signup" element={<Signup/>} />
         <Route path="/favorites/recipes/list"element={<RecipesFavorites />}></Route>
       </Routes>
     </div>
