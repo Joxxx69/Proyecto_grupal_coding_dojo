@@ -17,7 +17,7 @@ const CardsPlates = ({listRecipes}) => {
                                     <li className='d-block text-center'>
                                         <h5 className='text-uppercase'>{recipe.nameplate}</h5>
                                     </li>
-                                    <li className=' d-inline-block mx-3'>
+                                    <li className=' d-inline-block mx-2'>
                                         <span>{recipe.time} Minutes </span>
                                         <i className="material-icons-outlined align-bottom"> query_builder</i>  
                                     </li>
@@ -25,7 +25,7 @@ const CardsPlates = ({listRecipes}) => {
                                         <span>{recipe.portions} Porsions </span>
                                         <i className="material-icons-outlined align-bottom"> people</i>  
                                     </li>
-                                    <li className='d-inline-block mx-3 '>
+                                    <li className='d-inline-block mx-2 '>
                                         <span className='text-capitalize'>{recipe.category.nameCategory} </span>
                                         <i className="material-icons-outlined align-bottom"> restaurant</i>  
                                     </li>
