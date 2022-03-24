@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../images/logo_ninja.webp";
+import './navbar.css'
 
 const Navbar = ({ children }) => {
   const [search, setSearch] =useState([]);
@@ -81,7 +82,36 @@ const Navbar = ({ children }) => {
               <li className="nav-item">
                 <Link to={'/favorites/recipes/list'} className={'btn btn-light'}>Recetas Favoritas</Link>
               </li>
+              <li className="nav-item dropdown">
+                <button  type="button" className="btn btn-light" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false"  >
+                  Aleatorio por Region
+                </button>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <Link className="dropdown-item" to={`/recipes/random/${'Costa'}`} >
+                      Costa
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="dropdown-item" to={`/recipes/random/${'Sierra'}`} >
+                      Sierra
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to={`/recipes/random/${'Oriente'}`}>
+                      Oriente
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to={`/recipes/random/${'Insular'}`}>
+                      Insular
+                    </Link>
+                  </li>
+                </ul>
+              </li>
             </ul>
+            
             <form className="d-flex">
               <input
                 className="form-control me-2"
@@ -97,14 +127,30 @@ const Navbar = ({ children }) => {
                   Buscar
                 </button>
               </Link>
-
             </form>
+            <div className="nav-item dropdown col-1 text-center">
+              <button  type="button" className="btn btn-light mx-auto " id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false"  >
+                <i className="material-icons-outlined align-bottom" style={{"font-size": "35px"}} >account_circle</i>
+                
+              </button>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <Link className="dropdown-item" to={`/signup`} >
+                      Sign up
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to={`/login`} >
+                      Sign in
+                    </Link>
+                  </li>
+                </ul>
+            </div>
           </div>
         </div>
       </nav>
-      {search}
       {children}
-      <footer className="text-center mt-3">
+      <footer className="footer-basic">
         <div className="social">
           <a href="">
             <i className="icon ion-social-instagram"></i>

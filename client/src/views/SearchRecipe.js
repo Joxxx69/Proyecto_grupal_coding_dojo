@@ -23,6 +23,9 @@ const SearchRecipe = (params) => {
         <Navbar>
             <h2 className='mt-2 text-center'> Search Result: </h2>
             <CardsPlates listRecipes={listRecipes}></CardsPlates>
+            {
+                listRecipes.length === 0 && <h4 className = 'text-center'> Plato {name} no encontrado</h4>
+            }
         </Navbar>
     );
 }
