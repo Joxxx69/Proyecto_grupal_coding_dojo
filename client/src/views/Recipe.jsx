@@ -9,22 +9,37 @@ import "./recipe.css";
 const RecipeOne = () => {
     const [recipe, setRecipe] = useState([]);
     const [loaded, setLoaded] = useState(false);
-    const [favorite, setFavorite] = useState(false);
+    const [favorite, setFavorite] = useState();
     const { id } = useParams();
-    console.log(id);
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/plate/one/${id}`)
             .then(({ data }) => {
-                console.log(data);
                 setRecipe(data);
+                setFavorite(data.isFavorite)
                 setLoaded(true);
             })
             .catch((err) => console.log(err));
-    }, []);
+    },[favorite]);
 
-    console.log(favorite)
+    const favoriteForm =()=>(
+        <form onSubmit={favoriteSubmit} className={'col-1'}>
+            <button type="submit" className="btn btn-secondary" onClick={()=> setFavorite(!favorite)}>
+                {loaded && (favorite? <i className="bi bi-bookmark-fill"></i>:<i className="bi bi-bookmark"></i>)}
+            </button>
+        </form>
+    )
 
+    const favoriteSubmit =(e)=>{
+        e.preventDefault();
+        const copy = recipe;
+        console.log(copy);
+        axios.patch(`http://localhost:8000/api/edit_favorite_plate/${id}/${favorite}`)
+        .then(({data}) => console.log('este es el valor de verdad',data.isFavorite))
+        .catch(err => console.log(err))
+    }
+
+    
 
     return (
         <Navbar>
@@ -37,13 +52,7 @@ const RecipeOne = () => {
                                     <li className=' row justify-content-center'>
                                         <div className="col-1"/>
                                         <h2 className='text-uppercase text-center col-9'>{recipe.nameplate}</h2>
-                                        <button className="btn btn-secondary col-1" onClick={()=>setFavorite(!favorite)}>
-                                            {
-                                                favorite?   <i class="bi bi-bookmark-fill"></i>
-                                                            :
-                                                            <i class="bi bi-bookmark"></i>
-                                            }
-                                        </button>
+                                        {favoriteForm()}
                                     </li>
                                     <li className=' list-inline-item'>
                                         <span className="h5 text-muted">{recipe.time} Minutes </span>

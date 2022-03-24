@@ -96,7 +96,9 @@ console.log('seg: ', fecha.getSeconds())
 
 //update-favorite --. pueda cambiar a true y false ---jean pierre
 const updateIsFavoritePlato = (req, res) => {
-  Plate.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
+  const {id, logica} =req.params;
+  const value = (logica == 'true'); 
+  Plate.findByIdAndUpdate(id,{$set:{isFavorite:value}},{ new: true })
     .then((updatedPlate) => res.json(updatedPlate))
     .catch((err) => res.status(400).json(err));
 };
