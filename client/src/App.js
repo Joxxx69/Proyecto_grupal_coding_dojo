@@ -7,6 +7,7 @@ import PlateForm from "./components/PlateForm";
 import PlatesByCategory from "./views/PlatesByCategory";
 import AllRecipes from "./views/AllRecipes";
 import SearchRecipe from "./views/SearchRecipe";
+import RecipeOne from "./views/Recipe";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/recipes/:categoryName" element={<PlatesByCategory />}></Route>
         <Route path="/all-recipes" element={<AllRecipes />}></Route>
         <Route path="/repice/:name" element={<SearchRecipe />}></Route>
+        <Route path="/one/recipe" element={<RecipeOne/>}></Route>
       </Routes>
     </div>
   );

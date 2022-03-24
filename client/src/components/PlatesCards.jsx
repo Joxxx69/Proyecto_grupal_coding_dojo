@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './platesCards.css'
 
 const CardsPlates = ({listRecipes}) => {
@@ -31,8 +32,7 @@ const CardsPlates = ({listRecipes}) => {
                                             <i className="material-icons-outlined align-bottom"> restaurant</i>  
                                         </li>
                                     </ul>
-                                    <button className='btn btn-primary p-2 m-2'>ver mas</button>
-
+                                    <Link to={'/one/recipe'} className='btn btn-primary p-2 m-2'>ver mas</Link>
                                 </div>
                             </div>
                         ))
