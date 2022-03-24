@@ -32,7 +32,7 @@ const CardsPlates = ({listRecipes}) => {
                                             <i className="material-icons-outlined align-bottom"> restaurant</i>  
                                         </li>
                                     </ul>
-                                    <Link to={'/one/recipe'} className='btn btn-primary p-2 m-2'>ver mas</Link>
+                                    <Link to={`/one/recipe/${recipe._id}`} className='btn btn-primary p-2 m-2'>ver mas</Link>
                                 </div>
                             </div>
                         ))

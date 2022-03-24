@@ -57,8 +57,10 @@ const updatePlate = (request, response) => {
 };
 //getOne -- Jean Pierre
 const getPlateById = (req, res) => {
-  Plate.findOne({ _id: req.params.id })
-  .populate('category')
+  const {id}= req.params;
+  console.log(id)
+  Plate.findById(id)
+    .populate('category')
     .then((plate) => res.json(plate))
     .catch((err) => res.status(400).json(err));
 };
@@ -119,7 +121,7 @@ const recipesTimes = (req, res, next) => {
     });
 };
 
-// search-name  --- Ernesto
+// search-name  --- Jean pierre
 const getPlateByName = (request, response) => {
   Plate.findOne({ name: request.params.name })
     .then((plate) => response.json(plate))
