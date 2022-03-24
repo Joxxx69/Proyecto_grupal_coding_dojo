@@ -56,46 +56,30 @@ const Navbar = ({ children }) => {
                 </button>
               </li>
               <li className="nav-item dropdown">
-                <button
-                  type="button"
-                  className="btn btn-light"
-                  id="navbarDropdown"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
+                <button  type="button" className="btn btn-light" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false"  >
                   Tiempo
                 </button>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li>
-                    <Link
-                      className="dropdown-item"
-                      to={`/recipes/times/${10}/${20}`}
-                    >
+                    <Link className="dropdown-item" to={`/recipes/times/${10}/${20}`} >
                       10 - 20 minutes
                     </Link>
                   </li>
                   <li>
                     <Link
-                      className="dropdown-item"
-                      to={`/recipes/times/${20}/${30}`}
-                    >
+                      className="dropdown-item" to={`/recipes/times/${20}/${30}`} >
                       20 - 30 minutes
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      className="dropdown-item"
-                      to={`/recipes/times/${30}/${60}`}
-                    >
+                    <Link className="dropdown-item" to={`/recipes/times/${30}/${60}`}>
                       30 - 60 minutes
                     </Link>
                   </li>
                 </ul>
               </li>
               <li className="nav-item">
-                <button type="button" className="btn btn-light">
-                  Iniciar Sesion
-                </button>
+                <Link to={'/'} className={'btn btn-light'}>Recetas Favoritas</Link>
               </li>
             </ul>
             <form className="d-flex">
