@@ -177,7 +177,19 @@ const randomPlateRegion = (req, res) => {
   // este metodo muestra un chiste aleatorio
   const { RegionName } = req.params;
 
-  Plate.aggregate([{ $match: { region: RegionName } }])
+
+  // cuando hagas un map ---> tienes que hacer 
+  //recipe.category[0].categoryName
+  // para optener el nombre de la categoria 
+
+  Plate.aggregate([{ $match: {region: RegionName } },{
+    $lookup: {
+      from: "categories",
+      localField: "category",
+      foreignField: "_id",
+      as: "category",
+    },
+  }])
     .sample(1)
     .then((plateRandomRegion) => res.json(plateRandomRegion))
     .catch((err) => console.log(err));
