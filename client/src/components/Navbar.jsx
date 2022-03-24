@@ -126,8 +126,24 @@ const Navbar = ({ children }) => {
                   Buscar
                 </button>
               </Link>
-
             </form>
+            <div className="nav-item dropdown col-1 text-center">
+              <button  type="button" className="btn btn-light mx-auto " id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false"  >
+                <i className="material-icons-outlined align-bottom">account_circle</i>
+              </button>
+              <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <Link className="dropdown-item" to={`/signup`} >
+                      Sign up
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to={`/login`} >
+                      Sign in
+                    </Link>
+                  </li>
+                </ul>
+            </div>
           </div>
         </div>
       </nav>
