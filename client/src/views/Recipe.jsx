@@ -9,29 +9,23 @@ import "./recipe.css";
 const RecipeOne = () => {
     const [recipe, setRecipe] = useState([]);
     const [loaded, setLoaded] = useState(false);
-    const [favorite, setFavorite] = useState(false);
-    const [stateFavorite, setEstateFavorite] = useState();
+    const [favorite, setFavorite] = useState();
     const { id } = useParams();
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/plate/one/${id}`)
             .then(({ data }) => {
                 setRecipe(data);
-                setEstateFavorite(data.isFavorite)
+                setFavorite(data.isFavorite)
                 setLoaded(true);
             })
             .catch((err) => console.log(err));
-    },[stateFavorite]);
+    },[favorite]);
 
-    console.log('este es el estafo',stateFavorite);
-
-    const isFavorite = () => (
-        loaded && (stateFavorite? <i className="bi bi-bookmark-fill"></i>:<i className="bi bi-bookmark"></i>)
-        )
     const favoriteForm =()=>(
         <form onSubmit={favoriteSubmit} className={'col-1'}>
-            <button type="submit" className="btn btn-success" onClick={()=> setEstateFavorite(!stateFavorite)}>
-                {isFavorite()}
+            <button type="submit" className="btn btn-secondary" onClick={()=> setFavorite(!favorite)}>
+                {loaded && (favorite? <i className="bi bi-bookmark-fill"></i>:<i className="bi bi-bookmark"></i>)}
             </button>
         </form>
     )
@@ -40,7 +34,7 @@ const RecipeOne = () => {
         e.preventDefault();
         const copy = recipe;
         console.log(copy);
-        axios.patch(`http://localhost:8000/api/edit_favorite_plate/${id}/${stateFavorite}`)
+        axios.patch(`http://localhost:8000/api/edit_favorite_plate/${id}/${favorite}`)
         .then(({data}) => console.log('este es el valor de verdad',data.isFavorite))
         .catch(err => console.log(err))
     }
@@ -58,9 +52,6 @@ const RecipeOne = () => {
                                     <li className=' row justify-content-center'>
                                         <div className="col-1"/>
                                         <h2 className='text-uppercase text-center col-9'>{recipe.nameplate}</h2>
-                                        {/* <button className="btn btn-secondary col-1" onClick={()=>setFavorite(!favorite)}>
-                                            {isFavorite()}
-                                        </button> */}
                                         {favoriteForm()}
                                     </li>
                                     <li className=' list-inline-item'>
