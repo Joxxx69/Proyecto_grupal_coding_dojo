@@ -8,6 +8,7 @@ module.exports = function (app) {
   app.delete("/api/plate/delete/:id", controller.deletePlate);
   app.get("/api/getAll", controller.getAll); 
   app.get("/api/plate/one/:id", controller.getPlateById);
+  app.get("/api/favorites/recipes", controller.FavoritesRecipes);
 
   app.post("/api/new_plate", controller.createPlate);
   app.patch("/api/edit_favorite_plate/:id/:logica", controller.updateIsFavoritePlato);
