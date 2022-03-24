@@ -56,7 +56,7 @@ function RequireAuth({children,permission}) {
       return (
 
           <Navbar>
-            <div className='font-weight-bold h1'>access denied</div>
+            <div className='font-weight-bold h1 text-center'>access denied</div>
           </Navbar>
 
       );
