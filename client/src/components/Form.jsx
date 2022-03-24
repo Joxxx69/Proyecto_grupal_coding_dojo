@@ -46,8 +46,8 @@ const Form = (props) => {
     e.preventDefault();
     onSubmitProp({
       nameplate,
-      procedure: procedure.split(";").map((val) => val.trim()),
-      ingredients: ingredients.split(";").map((val) => val.trim()),
+      procedure: procedure,
+      ingredients: ingredients,
       category,
       photo,
       region,

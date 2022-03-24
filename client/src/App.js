@@ -11,12 +11,14 @@ import RecipesFavorites from "./views/RecipesFavorites";
 import Region from "./views/Region";
 import Signup from "./views/Signup";
 import AddRecipe from "./views/AddRecipe";
+import UpdateRecipe from "./views/UpdateRecipe";
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Main />}></Route>
+        <Route path="/update-recipe/:id" element={<UpdateRecipe />}></Route>
         <Route path="/recipes/times/:gte/:lte" element={<Recipes />}></Route>
         <Route path="/add-recipe" element={<AddRecipe />}></Route>
         <Route  path="/recipes/:categoryName" element={<PlatesByCategory />} ></Route>
