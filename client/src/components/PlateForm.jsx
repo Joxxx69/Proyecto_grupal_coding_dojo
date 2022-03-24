@@ -7,14 +7,14 @@ import { useNavigate } from "react-router-dom";
 const PlateForm = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCatecory, setSelectedCategory] = useState("");
-  const [selectedRegion, setSelectedRegion] = useState("");
+  const [region, setRegion] = useState("");
   const [nameplate, setNamePlate] = useState("");
-  const [prepTime, setPrepTime] = useState("");
+  const [time, setTime] = useState("");
   const [portions, setPortions] = useState("");
   const [procedure, setProcedure] = useState("");
   const [ingredients, setIngredients] = useState("");
-  const [photoUrl, setPhotoUrl] = useState("");
-  const [categoryId, setCategoryId] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [category, setCategory] = useState("");
   const [categoryIsCreated, setCategoryIsCreated] = useState(false);
   const [errors, setErrors] = useState([]);
   const regions = ["Costa", "Sierra", "Oriente", "Insular"];
@@ -23,34 +23,33 @@ const PlateForm = () => {
     axios.get("http://localhost:8000/api/getAllCategories").then((res) => {
       setCategories(res.data);
       setSelectedCategory(res.data[0].nameCategory);
-      setSelectedRegion(regions[0]);
-      //   console.log(res.data);
+      setRegion(regions[0]);
     });
   }, [categoryIsCreated]);
 
   useEffect(() => {
     if (categories.length > 0) {
-      setCategoryId(
+      setCategory(
         categories.filter(
           (val, idx) => val.nameCategory === selectedCatecory
         )[0]._id
       );
     }
-    console.log(categoryId);
+    console.log(category);
   }, [selectedCatecory]);
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
     axios
       .post("http://localhost:8000/api/createPlate", {
-        nameplate: nameplate,
-        procedure: procedure.split(";").map((val, idx) => val.trim()),
-        ingredients: ingredients.split(";").map((val, idx) => val.trim()),
-        category: categoryId,
-        photo: photoUrl,
-        region: selectedRegion,
-        time: prepTime,
-        portions: portions,
+        nameplate,
+        procedure,
+        ingredients,
+        category,
+        photo,
+        region,
+        time,
+        portions,
         isFavorite: false,
       })
       .then((res) => navigate("/"))
@@ -61,9 +60,7 @@ const PlateForm = () => {
           errorArr.push(errorResponse[key].message);
         }
         setErrors(errorArr);
-        // console.log(errorArr);
       });
-    // console.log(Ingredients);
   };
 
   return (
@@ -94,15 +91,15 @@ const PlateForm = () => {
               ></input>
             </div>
             <div className="form-group col-3">
-              <label className="fw-bold" htmlFor="prepTime">
+              <label className="fw-bold" htmlFor="time">
                 Tiempo de cocción:{" "}
               </label>
               <input
                 type="number"
                 className="form-control"
-                id="prepTime"
+                id="time"
                 placeholder="Tiempo"
-                onChange={(e) => setPrepTime(e.target.value)}
+                onChange={(e) => setTime(e.target.value)}
               ></input>
             </div>
             <div className="form-group col-3">
@@ -130,7 +127,11 @@ const PlateForm = () => {
                 id="procedure"
                 placeholder="Procedimiento"
                 rows="8"
-                onChange={(e) => setProcedure(e.target.value)}
+                onChange={(e) =>
+                  setProcedure(
+                    e.target.value.split(";").map((val, idx) => val.trim())
+                  )
+                }
               ></textarea>
               <div id="emailHelp" className="form-text">
                 Separe cada paso con un punto y coma (";")
@@ -145,7 +146,11 @@ const PlateForm = () => {
                 className="form-control"
                 id="ingredients"
                 placeholder="Ingredientes"
-                onChange={(e) => setIngredients(e.target.value)}
+                onChange={(e) =>
+                  setIngredients(
+                    e.target.value.split(";").map((val, idx) => val.trim())
+                  )
+                }
               ></textarea>
               <div id="emailHelp" className="form-text">
                 Separe los ingredientes con un punto y coma (";")
@@ -178,8 +183,8 @@ const PlateForm = () => {
                 <select
                   id="region"
                   className="form-control"
-                  defaultValue={selectedRegion}
-                  onChange={(e) => setSelectedRegion(e.target.value)}
+                  defaultValue={region}
+                  onChange={(e) => setRegion(e.target.value)}
                 >
                   {regions.map((val, idx) => {
                     return <option key={idx}>{val}</option>;
@@ -199,7 +204,7 @@ const PlateForm = () => {
               id="photo"
               aria-describedby="emailHelp"
               placeholder="Url de la imágen"
-              onChange={(e) => setPhotoUrl(e.target.value)}
+              onChange={(e) => setPhoto(e.target.value)}
             ></input>
           </div>
 
