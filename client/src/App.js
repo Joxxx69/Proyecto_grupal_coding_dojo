@@ -9,12 +9,14 @@ import SearchRecipe from "./views/SearchRecipe";
 import RecipeOne from "./views/Recipe";
 import RecipesFavorites from "./views/RecipesFavorites";
 import AddRecipe from "./views/AddRecipe";
+import UpdateRecipe from "./views/UpdateRecipe";
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path="/" element={<Main />}></Route>
+        <Route path="/update-recipe/:id" element={<UpdateRecipe />}></Route>
         <Route path="/recipes/times/:gte/:lte" element={<Recipes />}></Route>
         <Route path="/add-recipe" element={<AddRecipe />}></Route>
         <Route
