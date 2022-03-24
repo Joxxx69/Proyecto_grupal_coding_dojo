@@ -29,7 +29,6 @@ const CarouselDisplay = () => {
   useEffect(() => {
     axios.get("http://localhost:8000/api/getAllCategories").then((res) => {
       setCategories(res.data);
-      console.log(res.data);
     });
   }, []);
 

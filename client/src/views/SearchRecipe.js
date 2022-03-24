@@ -13,7 +13,6 @@ const SearchRecipe = (params) => {
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/search/${name}`)
         .then(({data})=> {
-            console.log(data);
             setListRecipes(data);
         })
         .catch(err => console.log(err))
