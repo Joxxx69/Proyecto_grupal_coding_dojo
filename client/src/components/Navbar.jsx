@@ -79,7 +79,7 @@ const Navbar = ({ children }) => {
                 </ul>
               </li>
               <li className="nav-item">
-                <Link to={'/'} className={'btn btn-light'}>Recetas Favoritas</Link>
+                <Link to={'/favorites/recipes/list'} className={'btn btn-light'}>Recetas Favoritas</Link>
               </li>
             </ul>
             <form className="d-flex">

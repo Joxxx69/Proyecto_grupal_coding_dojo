@@ -8,6 +8,7 @@ import PlatesByCategory from "./views/PlatesByCategory";
 import AllRecipes from "./views/AllRecipes";
 import SearchRecipe from "./views/SearchRecipe";
 import RecipeOne from "./views/Recipe";
+import RecipesFavorites from "./views/RecipesFavorites";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/all-recipes" element={<AllRecipes />}></Route>
         <Route path="/one/recipe/:id" element={<RecipeOne/>}></Route>
         <Route path="/search/recipe/:name" element={<SearchRecipe />}></Route>
+        <Route path="/favorites/recipes/list" element={<RecipesFavorites/>} ></Route>
       </Routes>
     </div>
   );
