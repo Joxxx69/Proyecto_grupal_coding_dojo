@@ -16,6 +16,5 @@ module.exports = function (app) {
   app.get("/api/getRandom/:ing1/:ing2/:ing3", controller.randomPlate);
 
   app.get("/api/search/:name",controller.searchName);
-
-
+  app.get("/api/random_plate/:regionName",controller.randomPlateRegion);
 };

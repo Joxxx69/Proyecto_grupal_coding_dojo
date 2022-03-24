@@ -81,7 +81,36 @@ const Navbar = ({ children }) => {
               <li className="nav-item">
                 <Link to={'/favorites/recipes/list'} className={'btn btn-light'}>Recetas Favoritas</Link>
               </li>
+              <li className="nav-item dropdown">
+                <button  type="button" className="btn btn-light" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false"  >
+                  Aleatorio por Region
+                </button>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li>
+                    <Link className="dropdown-item" to={`/recipes/random/${'Costa'}`} >
+                      Costa
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      className="dropdown-item" to={`/recipes/random/${'Sierra'}`} >
+                      Sierra
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to={`/recipes/random/${'Oriente'}`}>
+                      Oriente
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to={`/recipes/random/${'Insular'}`}>
+                      Insular
+                    </Link>
+                  </li>
+                </ul>
+              </li>
             </ul>
+            
             <form className="d-flex">
               <input
                 className="form-control me-2"
@@ -102,7 +131,6 @@ const Navbar = ({ children }) => {
           </div>
         </div>
       </nav>
-      {search}
       {children}
       <footer className="text-center mt-3">
         <div className="social">

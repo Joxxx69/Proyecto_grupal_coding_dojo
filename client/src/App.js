@@ -9,6 +9,7 @@ import AllRecipes from "./views/AllRecipes";
 import SearchRecipe from "./views/SearchRecipe";
 import RecipeOne from "./views/Recipe";
 import RecipesFavorites from "./views/RecipesFavorites";
+import Region from "./views/Region";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/one/recipe/:id" element={<RecipeOne/>}></Route>
         <Route path="/search/recipe/:name" element={<SearchRecipe />}></Route>
         <Route path="/favorites/recipes/list" element={<RecipesFavorites/>} ></Route>
+        <Route path="/recipes/random/:regionName" element={<Region/>} ></Route>
       </Routes>
     </div>
   );

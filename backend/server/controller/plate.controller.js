@@ -168,26 +168,20 @@ const searchName = (req, res, next) => {
       console.log("exite un error", err);
       next();
     });
-};
-
+}
 // genere un plato ramdon --- depende de la region -- Santiago
 // seria de genrar una llista filtrada y obtener un id aleatorio
 
 const randomPlateRegion = (req, res) => {
   // este metodo muestra un chiste aleatorio
-  const { RegionName } = req.params;
+  const { regionName } = req.params;
 
-
-  // cuando hagas un map ---> tienes que hacer 
-  //recipe.category[0].categoryName
-  // para optener el nombre de la categoria 
-
-  Plate.aggregate([{ $match: {region: RegionName } },{
-    $lookup: {
-      from: "categories",
-      localField: "category",
-      foreignField: "_id",
-      as: "category",
+  Plate.aggregate([{ $match: { region: regionName} },{
+    $lookup:{
+      from:'categories', 
+      localField:'category',
+      foreignField:'_id', 
+      as:'category'
     },
   }])
     .sample(1)
@@ -208,7 +202,6 @@ const randomPlateRegion = (req, res) => {
 // autenticacion
 
 ////
-
 module.exports = {
   createPlate,
   getAll,
@@ -220,5 +213,6 @@ module.exports = {
   getPlateByName,
   recipesTimes,
   searchName,
-  FavoritesRecipes, 
+  FavoritesRecipes,
+  randomPlateRegion
 };
