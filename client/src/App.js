@@ -4,6 +4,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import Recipes from "./views/Recipes";
 import PlateForm from "./components/PlateForm";
+import PlatesByCategory from "./views/PlatesByCategory";
 
 function App() {
   return (
@@ -12,6 +13,10 @@ function App() {
         <Route path="/" element={<Main />}></Route>
         <Route path="/recipes/times/:gte/:lte" element={<Recipes />}></Route>
         <Route path="/add-recipe" element={<PlateForm />}></Route>
+        <Route
+          path="/recipes/:categoryName"
+          element={<PlatesByCategory />}
+        ></Route>
       </Routes>
     </div>
   );

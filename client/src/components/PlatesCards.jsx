@@ -36,10 +36,7 @@ const CardsPlates = ({listRecipes}) => {
                     }
                 </div>
         </div>
-
     );
-
 }
-
 
 export default CardsPlates;

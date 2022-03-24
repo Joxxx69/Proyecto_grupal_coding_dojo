@@ -59,7 +59,7 @@ const ModalForm = (props) => {
               ></input>
 
               <label className="fw-bold" htmlFor="photoUrl">
-                Url de la imágen:
+                Url de la imagen:
               </label>
               <input
                 type="text"
