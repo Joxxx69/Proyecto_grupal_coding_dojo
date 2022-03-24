@@ -26,7 +26,14 @@ const RecipeOne = () => {
     console.log('este es el estafo',stateFavorite);
 
     const isFavorite = () => (
-        favorite? <i className="bi bi-bookmark-fill"></i>:<i className="bi bi-bookmark"></i>
+        loaded && (stateFavorite? <i className="bi bi-bookmark-fill"></i>:<i className="bi bi-bookmark"></i>)
+        )
+    const favoriteForm =()=>(
+        <form onSubmit={favoriteSubmit} className={'col-1'}>
+            <button type="submit" className="btn btn-success" onClick={()=> setEstateFavorite(!stateFavorite)}>
+                {isFavorite()}
+            </button>
+        </form>
     )
 
     const favoriteSubmit =(e)=>{
@@ -34,15 +41,10 @@ const RecipeOne = () => {
         const copy = recipe;
         console.log(copy);
         axios.patch(`http://localhost:8000/api/edit_favorite_plate/${id}/${stateFavorite}`)
-        .then(({data}) => console.log(data.isFavorite))
+        .then(({data}) => console.log('este es el valor de verdad',data.isFavorite))
         .catch(err => console.log(err))
     }
 
-    const favoritePlate =()=>(
-        <form onSubmit={favoriteSubmit}>
-            <button type="submit" className="btn btn-success" onClick={()=> setEstateFavorite(!stateFavorite)}>booleano</button>
-        </form>
-    )
     
 
     return (
@@ -56,9 +58,10 @@ const RecipeOne = () => {
                                     <li className=' row justify-content-center'>
                                         <div className="col-1"/>
                                         <h2 className='text-uppercase text-center col-9'>{recipe.nameplate}</h2>
-                                        <button className="btn btn-secondary col-1" onClick={()=>setFavorite(!favorite)}>
+                                        {/* <button className="btn btn-secondary col-1" onClick={()=>setFavorite(!favorite)}>
                                             {isFavorite()}
-                                        </button>
+                                        </button> */}
+                                        {favoriteForm()}
                                     </li>
                                     <li className=' list-inline-item'>
                                         <span className="h5 text-muted">{recipe.time} Minutes </span>
@@ -110,7 +113,6 @@ const RecipeOne = () => {
                     </div>
                 </div>
             )}
-            {favoritePlate()}
         </Navbar>
     );
 };
