@@ -48,6 +48,7 @@ const PlateForm = () => {
       region: selectedRegion,
       time: prepTime,
       portions: portions,
+      isFavorite: false,
     });
     // console.log(Ingredients);
   };
