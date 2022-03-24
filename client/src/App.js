@@ -18,8 +18,8 @@ function App() {
         <Route path="/add-recipe" element={<PlateForm />}></Route>
         <Route path="/recipes/:categoryName" element={<PlatesByCategory />}></Route>
         <Route path="/all-recipes" element={<AllRecipes />}></Route>
-        <Route path="/repice/:name" element={<SearchRecipe />}></Route>
         <Route path="/one/recipe/:id" element={<RecipeOne/>}></Route>
+        <Route path="/search/recipe/:name" element={<SearchRecipe />}></Route>
       </Routes>
     </div>
   );

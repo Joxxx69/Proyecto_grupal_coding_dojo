@@ -127,14 +127,14 @@ const getPlateByName = (request, response) => {
     .catch((err) => response.json(err));
 };
 
-const SearchName = (req,res,next) => {
+const searchName = (req,res,next) => {
 
-  const {nameProduct}= req.params;
+  const {name}= req.params;
   
-  Furniture.find({nameFurniture:{$regex:nameProduct}})
-  .then(furniture => res.json(furniture))
+  Plate.find({nameplate:{$regex: name, $options : 'i'}})
+  .then(plate => res.json(plate))
   .catch(err=> {console.log('exite un error',err); next()})
-}
+};
 
 // genere un plato ramdon --- depende de la region -- Santiago
 // seria de genrar una llista filtrada y obtener un id aleatorio
@@ -166,7 +166,8 @@ module.exports = {
   updatePlate,
   getPlateByName,
   platesNews,
-  recipesTimes
+  recipesTimes,
+  searchName
 };
 
 
