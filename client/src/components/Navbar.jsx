@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../images/logo_ninja.webp";
 
 const Navbar = ({ children }) => {
+  const [search, setSearch] =useState([]);
   let navigate = useNavigate();
+
   return (
     <div className="container py-4">
       <div className="d-flex ">
@@ -36,7 +38,11 @@ const Navbar = ({ children }) => {
                 </button>
               </li>
               <li className="nav-item">
-                <button type="button" className="btn btn-light">
+                <button 
+                  type="button" 
+                  className="btn btn-light"
+                  onClick={(e) => navigate("/all-recipes")}
+                >
                   Recetas
                 </button>
               </li>
@@ -98,14 +104,21 @@ const Navbar = ({ children }) => {
                 type="search"
                 placeholder="Buscador de recetas"
                 aria-label="Search"
+                onChange={(e) => setSearch(e.target.value)}
               />
-              <button className="btn btn-outline-success" type="submit">
-                Buscar
-              </button>
+              <Link
+                to={`/recipe/${search}`}
+              >
+                <button className="btn btn-outline-success" type="submit">
+                  Buscar
+                </button>
+              </Link>
+
             </form>
           </div>
         </div>
       </nav>
+      {search}
       {children}
       <footer className="text-center mt-3">
         <div className="social">

@@ -5,6 +5,8 @@ import { Route, Routes } from "react-router-dom";
 import Recipes from "./views/Recipes";
 import PlateForm from "./components/PlateForm";
 import PlatesByCategory from "./views/PlatesByCategory";
+import AllRecipes from "./views/AllRecipes";
+import SearchRecipe from "./views/SearchRecipe";
 
 function App() {
   return (
@@ -13,10 +15,9 @@ function App() {
         <Route path="/" element={<Main />}></Route>
         <Route path="/recipes/times/:gte/:lte" element={<Recipes />}></Route>
         <Route path="/add-recipe" element={<PlateForm />}></Route>
-        <Route
-          path="/recipes/:categoryName"
-          element={<PlatesByCategory />}
-        ></Route>
+        <Route path="/recipes/:categoryName" element={<PlatesByCategory />}></Route>
+        <Route path="/all-recipes" element={<AllRecipes />}></Route>
+        <Route path="/repice/:name" element={<SearchRecipe />}></Route>
       </Routes>
     </div>
   );
