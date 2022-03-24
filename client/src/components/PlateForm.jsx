@@ -16,6 +16,7 @@ const PlateForm = () => {
   const [photoUrl, setPhotoUrl] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [categoryIsCreated, setCategoryIsCreated] = useState(false);
+  const [errors, setErrors] = useState([]);
   const regions = ["Costa", "Sierra", "Oriente", "Insular"];
   let navigate = useNavigate();
   useEffect(() => {
@@ -52,7 +53,16 @@ const PlateForm = () => {
         portions: portions,
         isFavorite: false,
       })
-      .then((res) => navigate("/"));
+      .then((res) => navigate("/"))
+      .catch((err) => {
+        const errorResponse = err.response.data.errors;
+        const errorArr = [];
+        for (const key of Object.keys(errorResponse)) {
+          errorArr.push(errorResponse[key].message);
+        }
+        setErrors(errorArr);
+        // console.log(errorArr);
+      });
     // console.log(Ingredients);
   };
 
@@ -60,6 +70,14 @@ const PlateForm = () => {
     <Navbar>
       <div>
         <h1 className="text-center">Crea tu receta</h1>
+        {errors.map((err, index) => (
+          <p
+            className="p-3 mb-2 bg-danger text-white text-center col-6 m-auto"
+            key={index}
+          >
+            {err}
+          </p>
+        ))}
         <form className="mx-auto w-50" onSubmit={onSubmitHandler}>
           <div className="row">
             <div className="form-group col-6">

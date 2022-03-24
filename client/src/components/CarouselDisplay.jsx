@@ -45,9 +45,9 @@ const CarouselDisplay = () => {
                 src={val.photoUrl}
                 alt="Foto de una receta"
               ></img>
-              <div className="card-body">
+              <div className="card-body row">
                 <button
-                  className="btn btn-outline-success"
+                  className="btn btn-outline-success "
                   onClick={(e) => navigate(`/recipes/${val.nameCategory}`)}
                 >
                   {val.nameCategory}
