@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+var uniqueValidator = require("mongoose-unique-validator");
 const { ObjectId } = mongoose.Schema;
 
 const platesSchema = new mongoose.Schema(
@@ -6,7 +7,7 @@ const platesSchema = new mongoose.Schema(
     nameplate: {
       type: String,
       required: [true, "Ingresa el nombre."],
-      unique: [true, "ese nombre ya existe!"],
+      unique: [true],
     },
     time: {
       type: Number,
@@ -24,7 +25,7 @@ const platesSchema = new mongoose.Schema(
     category: {
       type: ObjectId,
       ref: "Category", // es el modelo a usar
-      required: true,
+      // required: true,
     },
     ingredients: {
       type: Array,
@@ -49,6 +50,9 @@ const platesSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+platesSchema.plugin(uniqueValidator, {
+  message: "¡Ya existe una receta con ese nombre!",
+});
 const Plate = mongoose.model("Plates", platesSchema);
 
 module.exports = Plate;
