@@ -109,7 +109,9 @@ const recipesTimes = (req, res, next) => {
   const lowerLimit = parseFloat(gte);
   const upperLimit = parseFloat(lte);
   console.log(gte, "esta es la ceparacion", lte);
-  Plate.aggregate([{$match:{$and:[{time:{$gte:lowerLimit, $lte:upperLimit}}]}}])
+  // Plate.aggregate([{$match:{$and:[{time:{$gte:lowerLimit, $lte:upperLimit}}]}}])
+  Plate.find({$and:[{time:{$gte:lowerLimit, $lte:upperLimit}}]})
+  .populate('category')
     .then(recipes => res.json(recipes))
     .catch((err) => {
       console.log("exite un error", err);
