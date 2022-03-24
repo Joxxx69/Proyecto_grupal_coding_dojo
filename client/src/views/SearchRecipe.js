@@ -17,7 +17,7 @@ const SearchRecipe = (params) => {
             setListRecipes(data);
         })
         .catch(err => console.log(err))
-    },[]);
+    },[name]);
 
     return(
         <Navbar>

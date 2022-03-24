@@ -107,7 +107,7 @@ const Navbar = ({ children }) => {
                 onChange={(e) => setSearch(e.target.value)}
               />
               <Link
-                to={`/recipe/${search}`}
+                to={`/search/recipe/${search}`}
               >
                 <button className="btn btn-outline-success" type="submit">
                   Buscar
