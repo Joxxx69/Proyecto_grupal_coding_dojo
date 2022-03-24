@@ -62,7 +62,7 @@ const createPlate = (req, res) => {
     portions,
     procedure,
     category,
-    ingredients,
+    ingredients, 
     isFavorite,
     photo,
     region,
