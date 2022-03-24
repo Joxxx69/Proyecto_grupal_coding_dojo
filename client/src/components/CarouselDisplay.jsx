@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const responsive = {
   superLargeDesktop: {
-    // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
     items: 5,
   },
@@ -24,6 +23,7 @@ const responsive = {
   },
 };
 const CarouselDisplay = () => {
+  let navigate = useNavigate();
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -43,16 +43,14 @@ const CarouselDisplay = () => {
                 style={{ height: "12rem" }}
                 className="card-img-top"
                 src={val.photoUrl}
-                alt="Card image cap"
+                alt="Foto de una receta"
               ></img>
               <div className="card-body">
-                <button className="btn btn-outline-success">
-                  <Link
-                    to={`/recipes/${val.nameCategory}`}
-                    className="card-title text-decoration-none "
-                  >
-                    {val.nameCategory}
-                  </Link>
+                <button
+                  className="btn btn-outline-success"
+                  onClick={(e) => navigate(`/recipes/${val.nameCategory}`)}
+                >
+                  {val.nameCategory}
                 </button>
               </div>
             </div>
