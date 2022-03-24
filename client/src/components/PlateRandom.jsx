@@ -70,7 +70,7 @@ const PlateRandom = () => {
                 />
               </div>
             ))}
-            <div className="mt-3 col-3 ">  
+            <div className="card mt-3">  
               <input className="btn btn-primary col-12 p-2 text-center" type={"submit"} value={"Search"} />
             </div>
           </form>
@@ -101,7 +101,9 @@ const PlateRandom = () => {
                       <i className="material-icons-outlined align-bottom"> restaurant</i>  
                     </li>
                   </ul>
-                  <Link to={`/one/recipe/${image._id}`} className='btn btn-primary p-2 m-2'>ver mas</Link>
+                  <div className='card mx-3'>
+                    <Link to={`/one/recipe/${image._id}`} className='btn btn-primary'>ver mas</Link>
+                  </div>
                 </div>
               ))
             }
