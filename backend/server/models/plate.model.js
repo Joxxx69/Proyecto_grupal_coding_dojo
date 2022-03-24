@@ -33,8 +33,7 @@ const platesSchema = new mongoose.Schema(
       trim: true,
     },
     isFavorite: {
-      type: Boolean, // si es true se guarda como favorito
-      // hacer que me liste los que esten en true
+      type: Boolean,
       required: true,
     },
     photo: {

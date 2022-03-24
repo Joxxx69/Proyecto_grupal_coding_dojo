@@ -12,7 +12,7 @@ const UpdateRecipe = () => {
 
   const [plate, setPlate] = useState();
   const [loaded, setLoaded] = useState(false);
-  const [errors, setErrors] = useState([]);
+  //const [errors, setErrors] = useState([]);
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/plate/one/" + params.id)
