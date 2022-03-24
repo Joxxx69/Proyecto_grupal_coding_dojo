@@ -1,5 +1,4 @@
-const controllers = require('../controllers/auth.controller');
-const Authenticate = require('../auth/jwt.auth');
+const controllers = require('../controller/auth.controller');
 
 module.exports = function(app){
     app.post('/api/register', controllers.Register);
