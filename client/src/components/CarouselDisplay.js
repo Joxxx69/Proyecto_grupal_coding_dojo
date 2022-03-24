@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import axios from "axios";
+
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -10,7 +11,7 @@ const responsive = {
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
-    items: 3,
+    items: 4,
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
@@ -49,14 +50,13 @@ const CarouselDisplay = () => {
       <Carousel responsive={responsive}>
         {categories.map((val, idx) => {
           return (
-            <a
+            <div
               onClick={(e) => {
                 setNameCategory(val.nameCategory);
                 setIsDisplayed(true);
               }}
               key={idx}
-              href="#"
-              className="card link-success"
+              className="card "
               style={{ width: "18rem" }}
             >
               <img
@@ -66,9 +66,11 @@ const CarouselDisplay = () => {
                 alt="Card image cap"
               ></img>
               <div className="card-body">
-                <h5 className="card-title">{val.nameCategory}</h5>
+                <a href="#" className="card-title link-success">
+                  {val.nameCategory}
+                </a>
               </div>
-            </a>
+            </div>
           );
         })}
       </Carousel>
@@ -78,7 +80,7 @@ const CarouselDisplay = () => {
           style={{ height: "30rem" }}
           className=" row border border-dark overflow-auto"
         >
-          <h1>Categoria: {nameCategory} </h1>
+          <h1>Categoría: {nameCategory} </h1>
 
           {isDisplayed &&
             plates
@@ -104,9 +106,6 @@ const CarouselDisplay = () => {
                           elit. Quisque rhoncus dui sit amet mi mollis, id
                           pellentesque leo gravida.
                         </p>
-                        {/* <a href="#" className="btn btn-outline-info">
-                          Favorito
-                        </a> */}
                         <h4>Porciones: {val.portions} </h4>
                       </div>
                     </div>

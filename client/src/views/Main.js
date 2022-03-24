@@ -3,7 +3,7 @@
 //import {Link} from '@reach/router'
 import PlateRandom from "../components/PlateRandom";
 import CarouselDisplay from "../components/CarouselDisplay";
-import Logo from '../images/logo_ninja.webp'
+import Logo from "../images/logo_ninja.webp";
 import Navbar from "../components/Navbar";
 import CardsPlates from "../components/PlatesCards";
 
@@ -20,7 +20,6 @@ const Main = () => {
     );
  }
 export default Main;
-
 
 // const Main = () => {
 //     return (

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "./Navbar";
+import ModalForm from "./ModalForm";
 
 const PlateForm = () => {
   const [categories, setCategories] = useState([]);
@@ -9,7 +10,6 @@ const PlateForm = () => {
   const [nameplate, setNamePlate] = useState("");
   const [prepTime, setPrepTime] = useState("");
   const [portions, setPortions] = useState("");
-  const [procedure, setProcedure] = useState("");
   const [proc1, setProc1] = useState("");
   const [proc2, setProc2] = useState("");
   const [proc3, setProc3] = useState("");
@@ -18,6 +18,7 @@ const PlateForm = () => {
   const [ing3, setIng3] = useState("");
   const [photoUrl, setPhotoUrl] = useState("");
   const [categoryId, setCategoryId] = useState("");
+  const [categoryIsCreated, setCategoryIsCreated] = useState(false);
 
   const regions = ["Costa", "Sierra", "Oriente", "Insular"];
   useEffect(() => {
@@ -27,7 +28,7 @@ const PlateForm = () => {
       setSelectedRegion(regions[0]);
       //   console.log(res.data);
     });
-  }, []);
+  }, [categoryIsCreated]);
 
   useEffect(() => {
     if (categories.length > 0) {
@@ -165,6 +166,10 @@ const PlateForm = () => {
                     return <option key={idx}>{val.nameCategory}</option>;
                   })}
                 </select>
+                <ModalForm
+                  categoryIsCreated={categoryIsCreated}
+                  setCategoryIsCreated={setCategoryIsCreated}
+                />
               </div>
 
               <div className="form-group">
@@ -199,7 +204,7 @@ const PlateForm = () => {
           </div>
 
           <button type="submit" className="btn btn-primary">
-            Submit
+            Crear
           </button>
         </form>
       </div>
