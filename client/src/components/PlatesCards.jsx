@@ -5,11 +5,11 @@ const CardsPlates = ({listRecipes}) => {
     
     console.log(listRecipes)
     return(
-        <div className='container mt-4'>
-                <div className="row">
+        <div className='container  p-4'>
+                <div className=" row">
                     {
                         listRecipes.map((recipe, idx) =>(
-                            <div key={idx} className='card col-lg-4 col-md-6 col-sm-6 border'>
+                            <div key={idx} className='card mt-4 col-lg-4 col-md-6 col-sm-6 border'>
                                 <div className='img-cont mt-3 mr-0'>
                                     <img src={recipe.photo} key={idx} alt={recipe.namePlate} className={'image-random'} />
                                 </div>
