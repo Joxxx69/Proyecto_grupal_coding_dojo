@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import { Link } from 'react-router-dom';
 
 const Region = (params) => {
     const {regionName} = useParams();
@@ -43,8 +44,11 @@ const Region = (params) => {
                         <i className="material-icons-outlined align-bottom"> restaurant</i>  
                         </li>
                     </ul>
-
+                    <div className='card mx-3'>
+                        <Link to={`/one/recipe/${image._id}`} className='btn btn-primary'>ver mas</Link>
                     </div>
+
+                </div>
                 ))
                 }
                 {
