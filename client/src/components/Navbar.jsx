@@ -27,9 +27,7 @@ const Navbar = ({children}) => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <button type="button" className="btn btn-light">
-                                    Inicio
-                                </button>
+                                <Link type="button" className="btn btn-light" to={'/'}>Inicio</Link>
                             </li>
                             <li className="nav-item">
                                 <button type="button" className="btn btn-light">

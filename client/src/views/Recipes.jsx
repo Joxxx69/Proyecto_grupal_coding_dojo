@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import CardsPlates from '../components/PlatesCards';
 
 const Recipes = (params) => {
     const {gte, lte} = useParams();
@@ -11,9 +12,12 @@ const Recipes = (params) => {
 
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/recipes/times/${gte}/${lte}`)
-        .then(({data})=> console.log(data))
+        .then(({data})=> {
+            console.log(data);
+            setListRecipes(data);
+        })
         .catch(err => console.log(err))
-    },[]);
+    },[gte,lte]);
 
     console.log(gte,lte);
     
@@ -22,6 +26,7 @@ const Recipes = (params) => {
     return(
         <Navbar>
             <h2 className='mt-2 text-center'>Cooking recipes between {gte} to {lte} minutes</h2>
+            <CardsPlates listRecipes={listRecipes}></CardsPlates>
         </Navbar>
     );
 }

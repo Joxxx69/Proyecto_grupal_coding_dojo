@@ -38,6 +38,9 @@ const deletePlate = (request, response) => {
 const createPlate = (req, res) => {
   const { nameplate, time, portions, procedure, category, ingredients, isFavorite, photo, region } = req.body;
   const newPlate = new Plate({ nameplate, time, portions, procedure, category, ingredients, isFavorite, photo, region });
+
+  // newPlate.procedure = procedure.split(';');
+
   newPlate.save()
     .then((plate) => res.json(plate))
     .catch((err) => console.log("there was an error", err));

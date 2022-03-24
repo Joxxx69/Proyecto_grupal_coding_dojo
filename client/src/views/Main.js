@@ -5,6 +5,7 @@ import PlateRandom from "../components/PlateRandom";
 import CarouselDisplay from "../components/CarouselDisplay";
 import Logo from '../images/logo_ninja.webp'
 import Navbar from "../components/Navbar";
+import CardsPlates from "../components/PlatesCards";
 
 const Main = () => { 
 
@@ -14,6 +15,7 @@ const Main = () => {
             <h2>Categorias:</h2>
             <CarouselDisplay />
             <PlateRandom />
+            {/* <CardsPlates></CardsPlates> */}
         </Navbar>
     );
  }

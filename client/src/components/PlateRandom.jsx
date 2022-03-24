@@ -88,11 +88,11 @@ const PlateRandom = () => {
                       <h5 className='text-uppercase'>{image.nameplate}</h5>
                     </li>
                     <li className=' d-inline-block mx-3'>
-                      <span>{image.time} 12 Minutes </span>
+                      <span>{image.time} Minutes </span>
                       <i className="material-icons-outlined align-bottom"> query_builder</i>  
                     </li>
                     <li className='d-inline-block mx-2 '>
-                      <span> 3 {image.portions} Porsions </span>
+                      <span>{image.portions} Porsions </span>
                       <i className="material-icons-outlined align-bottom"> people</i>  
                     </li>
                     <li className='d-inline-block mx-3 '>
