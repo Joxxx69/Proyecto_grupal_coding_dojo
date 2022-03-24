@@ -51,7 +51,7 @@ const RecipeOne = () => {
                                     <img className="mx-auto d-block img-fluid img-recipe" src={recipe.photo} alt={recipe.nameplate} />
                                 </div>
                                 <div className="row justify-content-center">
-                                    <div className="col-3 ">
+                                    <div className="col-3 ">   
                                         <h4 className="mt-3">
                                             <span>Ingredientes </span>
                                             <i className="material-icons-outlined align-bottom">fact_check</i>
@@ -59,7 +59,7 @@ const RecipeOne = () => {
                                         <ol className="mt-3">
                                             {recipe.ingredients.map((ingredient,idx)=>(
                                                 <li key={idx} className={'list-unstyled mb-2'}>
-                                                    <i class="material-icons-outlined align-bottom">verified</i>
+                                                    <i className="material-icons-outlined align-bottom">verified</i>
                                                     <span className={'text-capitalize'}> {ingredient}</span>
                                                 </li>
                                             ))}
@@ -68,7 +68,7 @@ const RecipeOne = () => {
                                     <div className="col-5">
                                         <h4 className="mt-3">
                                             <span>Procedimiento </span>
-                                            <i class="material-icons-outlined align-bottom">menu_book</i>
+                                            <i className="material-icons-outlined align-bottom">menu_book</i>
                                         </h4>
                                         <ol className="mt-3">
                                             {recipe.procedure.map((process,idx)=>(
