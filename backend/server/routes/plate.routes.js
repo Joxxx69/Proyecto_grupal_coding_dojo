@@ -14,6 +14,9 @@ module.exports = function (app) {
   app.post("/api/new_plate", controller.createPlate);
   app.patch("/api/edit_favorite_plate/:id", controller.updateIsFavoritePlato);
 
+  app.get("/api/search/:name", controller.searchName);
+  
+
   //rutas---> santiago
   app.get("/api/recipes/times/:gte/:lte",controller.recipesTimes);
 };
