@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React,{useState} from 'react';
+import { Link } from 'react-router-dom';
 import Logo from '../images/logo_ninja.webp'
 import './platerandom.css'
 
@@ -80,10 +81,10 @@ const PlateRandom = () => {
             {loaded &&
               result.map((image, idx) =>(
                 <div key={idx}>
-                  <div className='img-cont'>
+                  <div className='img-cont mx-3 mt-1'>
                     <img src={image.photo} key={idx} alt={image.namePlate} className={'image-random'} />
                   </div>
-                  <ul className='p-3 m-0'>
+                  <ul className='px-3 pt-2 pb-3 m-0'>
                     <li className='d-block text-center'>
                       <h5 className='text-uppercase'>{image.nameplate}</h5>
                     </li>
@@ -100,7 +101,7 @@ const PlateRandom = () => {
                       <i className="material-icons-outlined align-bottom"> restaurant</i>  
                     </li>
                   </ul>
-                  <button className='btn btn-primary'>ver mas</button>
+                  <Link to={`/one/recipe/${image._id}`} className='btn btn-primary p-2 m-2'>ver mas</Link>
                 </div>
               ))
             }
