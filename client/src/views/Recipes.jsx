@@ -25,7 +25,7 @@ const Recipes = (params) => {
     
     return(
         <Navbar>
-            <h2 className='mt-2 text-center'>Cooking recipes between {gte} to {lte} minutes</h2>
+            <h2 className='mt-4 mb-0 text-center'>Cooking recipes between {gte} to {lte} minutes</h2>
             <CardsPlates listRecipes={listRecipes}></CardsPlates>
         </Navbar>
     );
