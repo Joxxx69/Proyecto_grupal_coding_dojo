@@ -72,27 +72,6 @@ const getAll = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-//news  --santiago
-
-const platesNews = (req,res) => {
-
-Plate.find()
-
-
-  const fecha = new Date();
-console.log('dia: ',fecha.getDate())
-console.log('mes: ',fecha.getMonth()+1)
-console.log('hora: ', fecha.getHours())
-console.log('min: ', fecha.getMinutes())
-console.log('seg: ', fecha.getSeconds())
-
-}
-
-
-
-
-
-
 
 //update-favorite -- le agregue un $set y value ---> santiago
 const updateIsFavoritePlato = (req, res) => {
@@ -101,7 +80,15 @@ const updateIsFavoritePlato = (req, res) => {
   Plate.findByIdAndUpdate(id,{$set:{isFavorite:value}},{ new: true })
     .then((updatedPlate) => res.json(updatedPlate))
     .catch((err) => res.status(400).json(err));
+    
 };
+// favorites
+
+const FavoritesRecipes = (req,res) => {
+  Plate.find({isFavorite:true})
+  .then(favorites => res.json(favorites))
+  .catch(err=>res.status(400).json(err))
+}
 
 // se realiza el cambio con patch se utiliza $set
 
@@ -152,13 +139,7 @@ const randomPlateRegion = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-// favorites
 
-const FavoritesRecipes = (req,res) => {
-  Plate.find({isFavorite:true})
-  .then(favorites => res.json(favorites))
-  .catch(err=>res.status(400).json(err))
-}
 
 
 
@@ -181,7 +162,6 @@ module.exports = {
   deletePlate,
   updatePlate,
   getPlateByName,
-  platesNews,
   recipesTimes,
   searchName,
   FavoritesRecipes
