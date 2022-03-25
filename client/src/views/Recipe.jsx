@@ -5,11 +5,15 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import "./recipe.css";
+import useAuth from '../hooks/useAuth'
+
 
 const RecipeOne = () => {
     const [recipe, setRecipe] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const [favorite, setFavorite] = useState();
+    const {isAuthed} =useAuth();
+
     const { id } = useParams();
 
     useEffect(() => {
@@ -48,7 +52,7 @@ const RecipeOne = () => {
                                     <li className=' row justify-content-center'>
                                         <div className="col-1"/>
                                         <h2 className='text-uppercase text-center col-9'>{recipe.nameplate}</h2>
-                                        {favoriteForm()}
+                                        {isAuthed() && favoriteForm()}
                                     </li>
                                     <li className=' list-inline-item'>
                                         <span className="h5 text-muted">{recipe.time} Minutes </span>
