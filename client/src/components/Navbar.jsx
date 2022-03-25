@@ -89,9 +89,13 @@ const Navbar = ({ children }) => {
                   </li>
                 </ul>
               </li>
-              <li className="nav-item">
-                <Link to={'/favorites/recipes/list'} className={'btn btn-light'}>Recetas Favoritas</Link>
-              </li>
+              {
+                isAuthed() && (
+                <li className="nav-item">
+                  <Link to={'/favorites/recipes/list'} className={'btn btn-light'}>Recetas Favoritas</Link>
+                </li>
+                )
+              }
               <li className="nav-item dropdown">
                 <button  type="button" className="btn btn-light" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false"  >
                   Aleatorio por Region

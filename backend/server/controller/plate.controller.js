@@ -188,15 +188,9 @@ const randomPlateRegion = (req, res) => {
 };
 
 
-
-
-
-
-
-
 ////------------------------------------ proximas actualizaciones---------------------------
 // busqueda por nombre en tiempo real
-// implementar react-infinite-scroll
+// implementar react-infinite-scroll ----> creado pero es muy lento por le momento 
 // autenticacion
 
 ////
