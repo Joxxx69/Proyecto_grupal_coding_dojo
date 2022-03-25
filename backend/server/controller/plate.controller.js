@@ -1,12 +1,8 @@
 const Plate = require("../models/plate.model");
 const _ = require("lodash");
 
-/// para verle todos como hacer este controlor
-
-//random  ---santiago
 const randomPlate = (req, res) => {
   const { ing1, ing2, ing3 } = req.params;
-  // sample me genera uno doucmento aleatorio y all hace coincidan todos los elementos.
   Plate.aggregate([
     { $match: { ingredients: { $all: [ing1, ing2, ing3] } } },
     {
@@ -18,6 +14,7 @@ const randomPlate = (req, res) => {
       },
     },
   ])
+    // sample me genera uno doucmento aleatorio y all hace coincidan todos los elementos.
     .sample(1)
     .then((plateRandom) => {
       // el condicional me devuelve un plato aleatorio en caso que ninguno de los ingredientes coincidan con "$all"

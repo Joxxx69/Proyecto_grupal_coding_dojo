@@ -2,7 +2,6 @@ import axios from 'axios';
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import CardsPlates from '../components/PlatesCards';
 

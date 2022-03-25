@@ -8,7 +8,6 @@ import './platerandom.css'
 
 const PlateRandom = () => {
 
-    const [list, setList]= useState([]);
     const [result, setResult]=useState({});
     const [ingredients, setIngredients]=useState({
         ingredient1:'',
