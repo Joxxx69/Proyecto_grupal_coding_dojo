@@ -18,7 +18,7 @@ const AllRecipes = () => {
     
     return(
         <Navbar>
-            <h2 className='mt-2 text-center'>All Recipes: </h2>
+            <h2 className='mt-2 text-center'>Todas las Recetas: </h2>
             <CardsPlates listRecipes={listRecipes}></CardsPlates>
         </Navbar>
     );
