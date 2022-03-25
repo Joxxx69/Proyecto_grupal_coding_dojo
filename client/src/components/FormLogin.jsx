@@ -47,30 +47,34 @@ const FormLogin = ({onSubmitProp}) => {
     ];
 
     return (
-      <form className="sign-box" onSubmit={Submit}>
-            <h2 className='mb-3'>Sign in</h2>
-        {
-            InputsFormArray.map((input, idx)=>(
-                <div className="form-group" key={idx}> 
-                    <label className="text-muted">{input.label}</label>
-                    {input.name === 'email' &&
-                        <>
-                            <p className='offset-6 d-inline'>Need an accoun?</p>
-                            <Link className='ml-2' to={'/register'}>Sign up</Link>
-                        </>
-                    }
-                    <input required type={input.type}  className="form-control p-4" 
-                        value={input.value} name={input.name} onChange={(e)=>AuthChange(e,input.number)}
-                    />
-                    {input.validationEmail===false && <p className='text-danger font-weight-bold'>the email is wrong</p>}
-                    {input.error && <p className='text-danger font-weight-bold'>the field must have at least {input.number} characters</p>}
-                </div>
-            ))
-        }
-        <div className="mt-5">
-          <input className="btn btn-primary col-12 p-2 font-weight-bold"  type={'submit'} value={"Sing Up"}></input>
+      <div className='container p-3'>
+        <div className='row justify-content-center'>
+          <form className="col-5 border rounded-3 p-4" onSubmit={Submit}>
+                <h2 className='mb-3'>Sign in</h2>
+            {
+                InputsFormArray.map((input, idx)=>(
+                    <div className="form-group" key={idx}> 
+                        <label className="text-muted">{input.label}</label>
+                        {input.name === 'email' &&
+                            <>
+                                <p className='offset-6 d-inline'>Need an accoun?</p>
+                                <Link className='mx-2 text-decoration-none font-weight-bold' to={'/signup'}>Sign up</Link>
+                            </>
+                        }
+                        <input required type={input.type}  className="form-control p-4" 
+                            value={input.value} name={input.name} onChange={(e)=>AuthChange(e,input.number)}
+                        />
+                        {input.validationEmail===false && <p className='text-danger font-weight-bold'>the email is wrong</p>}
+                        {input.error && <p className='text-danger font-weight-bold'>the field must have at least {input.number} characters</p>}
+                    </div>
+                ))
+            }
+            <div className="mt-5">
+              <input className="btn btn-primary col-12 p-2 font-weight-bold"  type={'submit'} value={"Sing Up"}></input>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     );
   };
 

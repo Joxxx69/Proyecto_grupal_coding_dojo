@@ -100,7 +100,7 @@ const FormRegister = ({onSubmitProp, listUsers}) => {
                           {input.name === 'fname' &&
                               <>
                                   <p className='offset-4 d-inline'>Already have an account?</p>
-                                  <Link className='mx-2 text-decoration-none font-weight-bold' to={'/login'}>Sign in</Link>
+                                  <Link className='mx-2 text-decoration-none font-weight-bold' to={'/signin'}>Sign in</Link>
                               </>
                           }
                           <input required type={input.type} 

@@ -34,9 +34,10 @@ const UpdateRecipe = () => {
       {loaded && (
         <div>
           {" "}
+          {/* <h1 className="text-center">Actualizar receta</h1> */}
           <Form
             onSubmitProp={UpdatePlate}
-            initialName={plate.nameplate}
+            // initialName={plate.nameplate}
             initialProcedure={plate.procedure}
             initialIngredients={plate.ingredients}
             initialPhoto={plate.photo}
