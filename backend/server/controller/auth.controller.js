@@ -24,7 +24,7 @@ const Login =(req, res)=>{
             bcrypt.compare(password, user.password)
             .then(validatePassword =>{
                 if(validatePassword){
-                    if(email === process.env.ADMIN){
+                    if(email === process.env.ADMIN || email === process.env.ADMIN1 || email === process.env.ADMIN2){
                         console.log('3')  
                         const permissions = [process.env.ADMINPERMISSION1];
                         const JWT_AMIN = jwt.sign({_id:user.id, email, permissions}, process.env.JWT_TOKEN);
