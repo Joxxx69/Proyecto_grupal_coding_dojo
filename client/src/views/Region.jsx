@@ -31,11 +31,11 @@ const Region = (params) => {
                     <h5 className='text-uppercase text-center mt-2'>{image.nameplate}</h5>
                     <ul className=' d-flex justify-content-center '>
                         <li className=' d-inline-block mx-3'>
-                        <span>{image.time} Minutes </span>
+                        <span>{image.time} Minutos </span>
                         <i className="material-icons-outlined align-bottom"> query_builder</i>  
                         </li>
                         <li className='d-inline-block mx-2 '>
-                        <span>{image.portions} Porsions </span>
+                        <span>{image.portions} Porciones </span>
                         <i className="material-icons-outlined align-bottom"> people</i>  
                         </li>
                         <li className='d-inline-block mx-3 '>

@@ -17,7 +17,7 @@ const RecipesFavorites = () => {
     return(
         <Navbar>
             <div className='container mt-2'>
-                <h2 className='text-center m-0'>Favorites Recipes</h2>
+                <h2 className='text-center m-0'>Recetas Favoritas</h2>
             </div>
             <CardsPlates listRecipes={listFavorites}/>
         </Navbar>
